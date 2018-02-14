@@ -1,7 +1,33 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+
+    <nav class="navbar is-light">
+      <div class="navbar-brand">
+        <router-link class="navbar-item"
+                     :to="{ name: 'Home'}">
+          🌹 &nbsp;&nbsp;&nbsp;玫瑰爱链
+        </router-link>
+
+        <router-link class="navbar-item"
+                     :to="{ name: 'Buy'}">
+          送TA玫瑰
+        </router-link>
+      </div>
+    </nav>
+
+    <div class="container main-container">
+      <router-view/>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="content has-text-centered">
+          <p>
+            ❤️<br> Created by KJlmfe
+          </p>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -12,12 +38,10 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.main-container {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 </style>

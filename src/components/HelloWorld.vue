@@ -4,7 +4,7 @@
     <input v-model=from /> To:
     <input v-model=to /> Value:
     <input v-model=value
-           type="number" /> Message:
+           type="number" />Message:
     <textarea v-model=message />
     <button type="submit"
             @click="onBuy">Buy</button>
@@ -12,6 +12,8 @@
 </template>
 
 <script>
+
+import { getGift } from '@/api';
 
 export default {
   name: 'HelloWorld',
@@ -24,9 +26,12 @@ export default {
     };
   },
   methods: {
-    onBuy: () => {
-      alert(1);
+    onBuy: async () => {
+      const gift = await getGift(1);
+      console.log(gift);
     },
+  },
+  created() {
   },
 };
 </script>

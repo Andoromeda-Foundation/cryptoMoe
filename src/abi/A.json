@@ -2,11 +2,50 @@
 	{
 		"constant": true,
 		"inputs": [],
-		"name": "ceoAddress",
+		"name": "total",
 		"outputs": [
 			{
 				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
+		"name": "getRose",
+		"outputs": [
+			{
+				"name": "birthTime",
+				"type": "uint64"
+			},
+			{
+				"name": "buyer",
 				"type": "address"
+			},
+			{
+				"name": "message",
+				"type": "string"
+			},
+			{
+				"name": "from",
+				"type": "string"
+			},
+			{
+				"name": "to",
+				"type": "string"
+			},
+			{
+				"name": "value",
+				"type": "uint256"
 			}
 		],
 		"payable": false,
@@ -30,24 +69,15 @@
 	{
 		"constant": true,
 		"inputs": [],
-		"name": "totalSupply",
+		"name": "ceoAddress",
 		"outputs": [
 			{
 				"name": "",
-				"type": "uint256"
+				"type": "address"
 			}
 		],
 		"payable": false,
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [],
-		"name": "withdrawBalance",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -78,42 +108,12 @@
 		"type": "function"
 	},
 	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "_id",
-				"type": "uint256"
-			}
-		],
-		"name": "getKitty",
-		"outputs": [
-			{
-				"name": "birthTime",
-				"type": "uint64"
-			},
-			{
-				"name": "buyer",
-				"type": "address"
-			},
-			{
-				"name": "message",
-				"type": "string"
-			},
-			{
-				"name": "from",
-				"type": "string"
-			},
-			{
-				"name": "to",
-				"type": "string"
-			},
-			{
-				"name": "value",
-				"type": "uint256"
-			}
-		],
+		"constant": false,
+		"inputs": [],
+		"name": "withdrawBalance",
+		"outputs": [],
 		"payable": false,
-		"stateMutability": "view",
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
