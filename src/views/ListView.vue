@@ -4,10 +4,10 @@
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-          玫瑰爱链
+          水浒108将
       </h1>
       <h2 class="subtitle">
-        爱TA，就把爱永久的记录在区块链上
+        水浒108将 来获得你喜欢的将领吧! 
       </h2>
     </div>
   </div>
@@ -35,6 +35,7 @@
           </header>
           <div class="card-content">
             <div class="content">
+              <img src="{{gift.id}}.jpg" />
               {{gift.message}}
               <br>
               <p style="text-align:right;margin-top:10px;">

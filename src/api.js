@@ -11,7 +11,7 @@ const web3 = web3Provider ? new Web3(web3Provider) : new Web3(new Web3.providers
 // const rpc = "https://mainnet.infura.io/WtTerXFEBdFeRdCPm58K";
 
 
-const KittyContract = web3.eth.contract(kittyAbi).at('0xad3D3B1168813790580313996FEC2BE29A62E7A6');
+const KittyContract = web3.eth.contract(kittyAbi).at('0x46478a8e504078252166d224b1d164e9c09301f6');
 window.w = web3;
 window.cc = KittyContract;
 
