@@ -13,8 +13,18 @@
           送TA玫瑰
         </router-link>
       </div>
-    </nav>
 
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="field is-grouped">
+            <p class="control">
+              Ropsten Test Net
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </nav>
     <div class="container main-container">
       <router-view/>
     </div>
