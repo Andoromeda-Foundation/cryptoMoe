@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-
     <nav class="navbar is-light">
       <div class="navbar-brand">
         <router-link class="navbar-item"
