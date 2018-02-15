@@ -18,7 +18,8 @@
                    :key="gift.id"
                    v-if="gift"
                    :to="{ name: 'Gift', params:{id: gift.id}}"
-                   class="column is-full-mobile is-two-thirds-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd">
+                   class="column is-full-mobile is-two-thirds-tablet is-half-desktop
+                   is-one-third-widescreen is-one-quarter-fullhd">
         <div class="card">
           <header class="card-header">
             <p class="card-header-title">
@@ -82,6 +83,7 @@ export default {
     async loadGift(id, index) {
       window.xx = this.items;
       const giftx = await getGift(id);
+
       //   this.$set(this.items, id, giftx);
       //   this.items.push(null);
       this.items[index] = giftx;

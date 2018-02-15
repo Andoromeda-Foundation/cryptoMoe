@@ -96,7 +96,7 @@ export default {
     async onBuy() {
       console.log(this.from, this.to, this.message, this.value);
       buyGift(this.from, this.to, this.message, this.value * 0.001)
-        .then((giftId) => {
+        .then(() => {
           alert('您的爱正在被矿工打包记录到区块上，请稍后到首页查看');
         })
         .catch((e) => {

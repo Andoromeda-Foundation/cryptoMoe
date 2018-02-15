@@ -40,3 +40,4 @@ export const buyGift = (from, to, message, value) => new Promise((resolve, rejec
 export const getTotal = () => new Promise((resolve, reject) => {
   KittyContract.totalSupply((err, result) => (err ? reject(err) : resolve(result)));
 });
+
