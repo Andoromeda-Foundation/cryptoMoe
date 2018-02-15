@@ -18,15 +18,12 @@ window.cc = KittyContract;
 web3.eth.defaultAccount = web3.eth.accounts[0];
 
 export const getGift = id => new Promise((resolve, reject) => {
-  KittyContract.ownerOf(id, (err, result) => (err ? reject(err) : resolve(result[0]
+  KittyContract.ownerOf(id, (err, result) => (err ? reject(err) : resolve(result
   )));
 });
 
 export const buyGift = (value) => new Promise((resolve, reject) => {
-  KittyContract.buy(,
-  (err, result) => (err ? reject(err) : resolve(result)));
+  KittyContract.buy((err, result) => (err ? reject(err) : resolve(result)));
 });
 
-export const getTotal = () => new Promise((resolve, reject) => {
-  KittyContract.total((err, result) => (err ? reject(err) : resolve(result)));
-});
+export const getTotal = 12;
