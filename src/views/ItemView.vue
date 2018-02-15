@@ -5,7 +5,7 @@
 
 
         <div class="column">
-          <img :src="'/static/assets/heros/'+item.id+'.jpg'">
+          <img :src="'./static/assets/heros/'+item.id+'.jpg'">
         </div>
         <div class="column">
           <pre>{{JSON.stringify({item}, null,2)}}</pre>
