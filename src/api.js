@@ -18,19 +18,19 @@ window.cc = KittyContract;
 web3.eth.defaultAccount = web3.eth.accounts[0];
 
 export const getGift = id => new Promise((resolve, reject) => {
-  KittyContract.getRose(id, (err, result) => (err ? reject(err) : resolve({
-    birthTime: result[0],
-    buyer: result[1],
-    message: result[2],
-    from: result[3],
-    to: result[4],
-    value: result[5],
+  KittyContract.ownerOf(id, (err, result) => (err ? reject(err) : resolve({
+    birthTime: 'birth time',
+    buyer: result,
+    message: 'far',
+    from: 'from',
+    to: 'to',
+    value: 1,
     id,
   })));
 });
 
-export const buyGift = (from, to, message, value) => new Promise((resolve, reject) => {
-  KittyContract.buyRose(from, to, message, {
+export const buyGift = (itemId, value) => new Promise((resolve, reject) => {
+  KittyContract.buy(itemId, {
     value: web3.toWei(Number(value), 'ether'),
     gas: 220000,
   },
