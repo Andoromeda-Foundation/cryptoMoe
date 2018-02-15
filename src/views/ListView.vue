@@ -61,4 +61,3 @@ export default {
   watch: {},
 };
 </script>
-

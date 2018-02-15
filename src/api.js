@@ -30,4 +30,6 @@ export const buyGift = value => new Promise((resolve, reject) => {
   cryptoWaterMarginContract.buy((err, result) => (err ? reject(err) : resolve(result)));
 });
 
-export const getTotal = 12;
+export const getTotal = () => new Promise((resolve, reject) => {
+  cryptoWaterMarginContract.totalSupply((err, result) => (err ? reject(err) : resolve(result)));
+});
