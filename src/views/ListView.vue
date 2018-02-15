@@ -1,10 +1,12 @@
 <template>
   <div>
+    Total: {{total}}
     <div class="columns is-multiline is-mobile">
-      <div v-for="item in items"
-           v-if="item"
-           :key=item.id
-           class="column
+      <router-link v-for="item in items"
+                   v-if="item"
+                   :to="{ name: 'Item', params:{id: item.id}}"
+                   :key=item.id.toString()
+                   class="column
            is-full-mobile
            is-two-thirds-tablet
            is-half-desktop
@@ -18,38 +20,35 @@
           </div>
           <div class="card-content">
             <div class="content">
-              <ul>
-                <li>Owner: {{item.owner}}</li>
-                <li>Price: {{item.price}}</li>
-                <li>StartingPrice: {{item.startingPrice}}</li>
-                <li>NextPrice: {{item.nextPrice}}</li>
-              </ul>
+              <pre>{{JSON.stringify(item, null,2)}}</pre>
             </div>
           </div>
         </div>
-      </div>
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
-import { getItem } from '@/api';
-import { BigNumber } from 'bignumber.js';
+import { getTotal, getItemIds, getItem } from '@/api';
 
 export default {
   name: 'item-list',
   data() {
     return {
       items: [],
+      total: null,
     };
   },
 
   computed: {},
 
-  created() {
-    for (let i = 1; i <= 114; i += 1) {
-      this.loadItem(i);
-    }
+  async created() {
+    this.total = await getTotal();
+    const itemIds = await getItemIds(0, this.total);
+    itemIds.forEach((id) => {
+      this.loadItem(id);
+    });
   },
 
   methods: {

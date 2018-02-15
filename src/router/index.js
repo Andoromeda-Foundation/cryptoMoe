@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import GiftView from '@/views/GiftView';
-import BuyView from '@/views/BuyView';
+import ItemView from '@/views/ItemView';
 import ListView from '@/views/ListView';
 
 Vue.use(Router);
@@ -13,7 +12,6 @@ export default new Router({
       name: 'Home',
       component: ListView,
     },
-    { name: 'Gift', path: '/gift/:id(\\d+)', component: GiftView },
-    { name: 'Buy', path: '/buy', component: BuyView },
+    { name: 'Item', path: '/item/:id(\\d+)', component: ItemView },
   ],
 });
