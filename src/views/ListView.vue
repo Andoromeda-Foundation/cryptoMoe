@@ -1,8 +1,39 @@
 <template>
+  <div>
+    <div class="columns is-multiline is-mobile">
+      <div v-for="item in items"
+           v-if="item"
+           :key=item.id
+           class="column
+           is-full-mobile
+           is-two-thirds-tablet
+           is-half-desktop
+           is-one-quarter-widescreen
+           is-one-quarter-fullhd">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-5by4">
+              <img :src="'/static/assets/heros/'+item.id+'.jpg'">
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="content">
+              <ul>
+                <li>Owner: {{item.owner}}</li>
+                <li>Price: {{item.price}}</li>
+                <li>StartingPrice: {{item.startingPrice}}</li>
+                <li>NextPrice: {{item.nextPrice}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import { getTotal, getGift } from '@/api';
+import { getItem } from '@/api';
 import { BigNumber } from 'bignumber.js';
 
 export default {
@@ -10,53 +41,24 @@ export default {
   data() {
     return {
       items: [],
-      total: 0,
-      displayedTotal: 0,
     };
   },
 
-  computed: {
-
-  },
+  computed: {},
 
   created() {
-    getTotal().then((total) => {
-      this.total = Number(total);
-      this.displayedTotal += 5;
-    });
+    for (let i = 1; i <= 114; i += 1) {
+      this.loadItem(i);
+    }
   },
 
   methods: {
-    async loadGift(id, index) {
-      /* window.xx = this.items;
-      const giftx = await getGift(id);
-      //   this.$set(this.items, id, giftx);
-      //   this.items.push(null);
-      this.items[index] = giftx;
-      this.$forceUpdate(); */
-    },
-    loadMore(increase) {
-      /* if (this.displayedTotal >= this.total) {
-        alert('没有更多啦');
-      }
-      this.displayedTotal += increase; */
-    },
-    valueToQuntity(value) {
-      return Number(BigNumber(value).dividedBy(BigNumber('1000000000000000')));
+    async loadItem(id) {
+      this.items[id] = await getItem(id);
+      this.$forceUpdate();
     },
   },
-  watch: {
-    displayedTotal(newValue) {
-      /* const num = Math.min(newValue, this.total);
-      console.log(num, 'nnn');
-       for (let i = 0; i < num; i += 1) {
-        if (!this.items[i]) {
-          const giftId = this.total - i - 1;
-          this.loadGift(giftId, i);
-        }
-      } */
-    },
-  },
+  watch: {},
 };
 </script>
 
