@@ -4,17 +4,21 @@
       <div class="navbar-brand">
         <router-link class="navbar-item"
                      :to="{ name: 'Home'}">
-          🌹 &nbsp;&nbsp;&nbsp;玫瑰爱链
+          🌹 &nbsp;&nbsp;&nbsp;加密水浒
         </router-link>
 
         <router-link class="navbar-item"
-                     :to="{ name: 'Buy'}">
-          送TA玫瑰
+                     :to="{ name: 'Login'}">
+          登陆游戏
         </router-link>
+        <router-link class="navbar-item"
+                     :to="{ name: 'FAQ'}">
+          常见问题
+        </router-link>        
       </div>
 
       <div class="navbar-end">
-        <div class="navbar-item">
+        <div class="navbar-item">    
           <div class="field is-grouped">
             <p class="control">
               Ropsten Test Net
@@ -32,7 +36,7 @@
       <div class="container">
         <div class="content has-text-centered">
           <p>
-            ❤️<br> Created by KJlmfe
+            ❤️<br> Created by Cryptogame 爱好者
           </p>
         </div>
       </div>
