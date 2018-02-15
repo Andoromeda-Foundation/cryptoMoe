@@ -8,6 +8,9 @@
           <img :src="'./static/assets/heros/'+item.id+'.jpg'">
         </div>
         <div class="column">
+          <img :src="'./static/assets/back/back_'+item.id+'.jpg'">
+        </div>        
+        <div class="column">
           <pre>{{JSON.stringify({item}, null,2)}}</pre>
           <button class="button is-primary"
                   @click="onBuy">Buy</button>
