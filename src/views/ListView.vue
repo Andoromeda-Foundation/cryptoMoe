@@ -1,6 +1,8 @@
 <template>
-  <div>
-    Total: {{total}}
+  <div class="">
+    <div v-if="loading" class="loader-wrapper">
+      <pulse-loader></pulse-loader>
+    </div>
     <div class="columns is-multiline is-mobile">
       <router-link v-for="item in items"
                    v-if="item"
@@ -41,13 +43,20 @@
 </template>
 
 <script>
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
+
 import { getTotal, getItemIds, getItem } from '@/api';
 import { toReadablePrice } from '@/util';
 
 export default {
   name: 'item-list',
+  components: {
+    PulseLoader,
+  },
+
   data() {
     return {
+      loading: true,
       items: [],
       total: null,
     };
@@ -62,6 +71,7 @@ export default {
     const items = await Promise.all(getItemsPromise);
     items.sort((a, b) => a.id - b.id);
     this.items = items;
+    this.loading = false;
   },
 
   methods: {
@@ -73,3 +83,12 @@ export default {
   watch: {},
 };
 </script>
+<style scoped>
+.loader-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+</style>
+
