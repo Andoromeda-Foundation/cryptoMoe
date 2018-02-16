@@ -4,7 +4,7 @@
   <li>基础</li>
     <ul>
      <li>什么是 CryptoGame</li>    
-      加密游戏（CryptoGame），或者区块链游戏（Blockchain Game）是指利用区块链技术制作的一类去中心化应用。最早可以追溯到 <a href="https://zhuanlan.zhihu.com/c_161904580">Satoshi Dice</a>，最早的基于以太坊上的游戏，可以追溯到 <a href="https://www.kingoftheether.com/">The King of the Ether</a>。
+      加密游戏（CryptoGame），或者区块链游戏是指利用区块链技术制作的一类去中心化应用。最早可以追溯到 2012 诞生的 <a href="https://en.bitcoin.it/wiki/Satoshi_Dice">Satoshi Dice</a> 的赌博游戏。该游戏通过给几个不同的转账地址设置不同的赔率，在用户向这些地址转账的时候监听所产生的 Transaction Hash 进而 产生一组 0 到 65535 之间的随机数。最早的基于以太坊智能合约的游戏，则可以追溯到 <a href="https://www.reddit.com/r/ethereum/comments/44h1m1/a_new_%C3%B0app_king_of_the_ether_throne/">King of the Ether Throne</a>。
       和许多其他的 Dapp 一样，加密游戏也面临着 Scability 所带来的性能瓶颈。
       因此现在大部分加密游戏都只将用户的资产保存在区块链上。
       <li>了解以太水浒</li>
