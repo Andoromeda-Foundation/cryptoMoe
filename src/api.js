@@ -92,6 +92,7 @@ export const setAd = async (id, str) => {
       id: `${id}`,
       ad: str,
     });
+  await init();
 
   return str;
 };
