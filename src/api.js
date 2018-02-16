@@ -29,9 +29,10 @@ export const init = async () => {
 
 init().then();
 
-export const getMe = async () => ({
-  address: web3.eth.defaultAccount,
-});
+export const getMe = async () => {
+  const address = web3.eth.defaultAccount;
+  return address ? { address } : null;
+};
 
 export const getAd = async (id, time = 0) => {
   if (!isInit) {
@@ -91,6 +92,7 @@ export const setAd = async (id, str) => {
       id: `${id}`,
       ad: str,
     });
+  await init();
 
   return str;
 };
@@ -131,3 +133,7 @@ export const isItemMaster = async (id) => {
 
   return me && me.address && item && item.owner && me.address === item.owner;
 };
+
+export const getItemsOf = async address => Promise.promisify(
+  cryptoWaterMarginContract.tokensOf)(address)
+  ;

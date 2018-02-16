@@ -4,11 +4,11 @@
       <div class="columns is-multiline is-mobile">
         <div class="column
            is-full-mobile">
-          <img :src="'./static/assets/heros/'+item.id+'.jpg'">
+          <img :src="'http://test.cdn.hackx.org/heros/'+item.id+'.jpg'">
         </div>
         <div class="column
            is-full-mobile">
-          <img :src="'./static/assets/back/back_'+item.id+'.jpg'">
+          <img :src="'http://test.cdn.hackx.org/back/back_'+item.id+'.jpg'">
         </div>
         <div class="column
            is-full-mobile">
@@ -88,6 +88,9 @@ export default {
     async onUpdateAd() {
       const ad = prompt('请输入您的标语内容：');
       if (ad !== null) {
+        if (ad.length > 100) {
+          return alert('标语最长只有100个字符');
+        }
         setAd(this.itemId, ad)
           .then(() => {
             this.item.ad = ad;
