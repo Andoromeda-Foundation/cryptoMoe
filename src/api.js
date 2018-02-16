@@ -1,5 +1,6 @@
 import Promise from 'bluebird';
 import web3 from '@/web3';
+import * as config from '@/config';
 import request from 'superagent';
 import timeout from 'timeout-then';
 import cryptoWaterMarginABI from './abi/cryptoWaterMargin.json';
@@ -97,15 +98,21 @@ export const setAd = async (id, str) => {
 export const getItem = async (id) => {
   const exist = await Promise.promisify(cryptoWaterMarginContract.tokenExists)(id);
   if (!exist) return null;
-  const item = { id };
-  [item.owner, item.nextPrice, item.startingPrice, item.price, item.approved, item.ad] = await Promise.all([
-    Promise.promisify(cryptoWaterMarginContract.ownerOf)(id),
-    Promise.promisify(cryptoWaterMarginContract.nextPriceOf)(id),
-    Promise.promisify(cryptoWaterMarginContract.startingPriceOf)(id),
-    Promise.promisify(cryptoWaterMarginContract.priceOf)(id),
-    Promise.promisify(cryptoWaterMarginContract.approvedFor)(id),
-    getAd(id),
-  ]);
+  const card = config.cards[id] || {};
+  const item = {
+    id,
+    name: card.name,
+    nickname: card.nickname,
+  };
+  [item.owner, item.nextPrice, item.startingPrice, item.price, item.approved, item.ad] =
+    await Promise.all([
+      Promise.promisify(cryptoWaterMarginContract.ownerOf)(id),
+      Promise.promisify(cryptoWaterMarginContract.nextPriceOf)(id),
+      Promise.promisify(cryptoWaterMarginContract.startingPriceOf)(id),
+      Promise.promisify(cryptoWaterMarginContract.priceOf)(id),
+      Promise.promisify(cryptoWaterMarginContract.approvedFor)(id),
+      getAd(id),
+    ]);
   return item;
 };
 
