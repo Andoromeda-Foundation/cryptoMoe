@@ -12,18 +12,29 @@
            is-half-desktop
            is-one-quarter-widescreen
            is-one-quarter-fullhd">
-        <div class="card">
-          <div class="card-image">
-            <figure class="image is-5by4">
-              <img :src="'./static/assets/heros/'+item.id+'.jpg'">
-            </figure>
-          </div>
-          <div class="card-content">
-            <div class="content">
-              <pre>{{JSON.stringify(item, null,2)}}</pre>
+        <template v-if="1 <= item.id && item.id <= 114">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-5by4">
+                <img :src="'./static/assets/heros/'+item.id+'.jpg'">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="content is-small">
+                <h4>{{item.nickname}} · {{item.name}}</h4>
+                <ul>
+                  <li>拥有者：
+                    <router-link :to="{ name: 'User', params:{address: item.owner}}">
+                      {{item.owner.slice(-6).toUpperCase()}}
+                    </router-link>
+                  </li>
+                  <li>当前价格：{{toDisplayedPrice(item.price)}}</li>
+                </ul>
+                <p>小广告：{{item.ad}}</p>
+              </div>
             </div>
           </div>
-        </div>
+        </template>
       </router-link>
     </div>
   </div>
@@ -31,6 +42,7 @@
 
 <script>
 import { getTotal, getItemIds, getItem } from '@/api';
+import { toReadablePrice } from '@/util';
 
 export default {
   name: 'item-list',
@@ -55,6 +67,10 @@ export default {
     async loadItem(id) {
       this.items[id] = await getItem(id);
       this.$forceUpdate();
+    },
+    toDisplayedPrice(priceInWei) {
+      const readable = toReadablePrice(priceInWei);
+      return `${readable.price} ${readable.unit}`;
     },
   },
   watch: {},

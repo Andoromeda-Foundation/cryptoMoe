@@ -14,11 +14,11 @@
         <router-link class="navbar-item"
                      :to="{ name: 'FAQ'}">
           常见问题
-        </router-link>        
+        </router-link>
       </div>
 
       <div class="navbar-end">
-        <div class="navbar-item">    
+        <div class="navbar-item">
           <div class="field is-grouped">
             <p class="control">
               Ropsten Test Net
@@ -47,6 +47,9 @@
 <script>
 export default {
   name: 'App',
+  created() {
+    this.$store.dispatch('FETCH_ME');
+  },
 };
 </script>
 
