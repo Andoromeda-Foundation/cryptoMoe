@@ -100,6 +100,7 @@ export default {
             console.log(e);
           });
       }
+      return 0;
     },
   },
 };
