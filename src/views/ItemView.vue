@@ -22,11 +22,11 @@
               </li>
               <li>当前价格：{{toDisplayedPrice(item.price)}}</li>
             </ul>
-            <p>小广告：{{item.ad}}</p>
+            <p>标语：{{item.ad}}</p>
             <article v-if="item.owner !== me.address"
                      class="message is-warning">
               <div class="message-body">
-                购买此卡后，您可以编辑小广告
+                购买此卡后，您可以编辑标语
               </div>
             </article>
           </div>
@@ -35,7 +35,7 @@
                   @click="onBuy">买卡</button>
           <button v-if="item.owner === me.address"
                   class="button is-warning"
-                  @click="onUpdateAd">编辑小广告</button>
+                  @click="onUpdateAd">编辑标语</button>
         </div>
       </div>
     </div>
@@ -86,7 +86,7 @@ export default {
       return `${readable.price} ${readable.unit}`;
     },
     async onUpdateAd() {
-      const ad = prompt('请输入您的小广告内容：');
+      const ad = prompt('请输入您的标语内容：');
       if (ad !== null) {
         setAd(this.itemId, ad)
           .then(() => {

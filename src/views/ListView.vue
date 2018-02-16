@@ -32,7 +32,7 @@
                   </li>
                   <li>当前价格：{{toDisplayedPrice(item.price)}}</li>
                 </ul>
-                <p>小广告：{{item.ad}}</p>
+                <p>标语：{{item.ad}}</p>
               </div>
             </div>
           </div>
