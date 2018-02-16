@@ -14,7 +14,7 @@
         <div class="card">
           <div class="card-image">
             <figure class="image is-5by4">
-              <img v-lazy="'./static/assets/heros/'+item.id+'.jpg'">
+              <img v-lazy="'http://test.cdn.hackx.org/heros/'+item.id+'.jpg'">
             </figure>
           </div>
           <div class="card-content">

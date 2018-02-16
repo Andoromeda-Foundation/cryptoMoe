@@ -4,11 +4,11 @@
       <div class="columns is-multiline is-mobile">
         <div class="column
            is-full-mobile">
-          <img :src="'./static/assets/heros/'+item.id+'.jpg'">
+          <img :src="'http://test.cdn.hackx.org/heros/'+item.id+'.jpg'">
         </div>
         <div class="column
            is-full-mobile">
-          <img :src="'./static/assets/back/back_'+item.id+'.jpg'">
+          <img :src="'http://test.cdn.hackx.org/back/back_'+item.id+'.jpg'">
         </div>
         <div class="column
            is-full-mobile">
