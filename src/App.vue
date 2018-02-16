@@ -7,10 +7,18 @@
           🌹 &nbsp;&nbsp;&nbsp;加密水浒
         </router-link>
 
-        <router-link class="navbar-item"
+        <router-link v-if="!me"
+                     class="navbar-item"
                      :to="{ name: 'Login'}">
           登陆游戏
         </router-link>
+
+        <router-link v-else
+                     class="navbar-item"
+                     :to="{ name: 'User', params:{address: me.address}}">
+          我的卡牌
+        </router-link>
+
         <router-link class="navbar-item"
                      :to="{ name: 'FAQ'}">
           常见问题
@@ -49,6 +57,11 @@ export default {
   name: 'App',
   created() {
     this.$store.dispatch('FETCH_ME');
+  },
+  computed: {
+    me() {
+      return this.$store.state.me;
+    },
   },
 };
 </script>

@@ -132,3 +132,7 @@ export const isItemMaster = async (id) => {
 
   return me && me.address && item && item.owner && me.address === item.owner;
 };
+
+export const getItemsOf = async address => Promise.promisify(
+  cryptoWaterMarginContract.tokensOf)(address)
+;
