@@ -13,7 +13,7 @@
         <div class="column
            is-full-mobile">
           <div class="content">
-            <h2>{{item.name}} · {{item.nickname}}</h2>
+            <h2>{{item.nickname}} · {{item.name}}</h2>
             <ul>
               <li>拥有者：
                 <router-link :to="{ name: 'User', params:{address: item.owner}}">

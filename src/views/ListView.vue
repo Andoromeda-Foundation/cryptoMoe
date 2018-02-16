@@ -21,7 +21,7 @@
             </div>
             <div class="card-content">
               <div class="content is-small">
-                <h4>{{item.name}} · {{item.nickname}}</h4>
+                <h4>{{item.nickname}} · {{item.name}}</h4>
                 <ul>
                   <li>拥有者：
                     <router-link :to="{ name: 'User', params:{address: item.owner}}">
