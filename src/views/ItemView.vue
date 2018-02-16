@@ -88,6 +88,9 @@ export default {
     async onUpdateAd() {
       const ad = prompt('请输入您的标语内容：');
       if (ad !== null) {
+        if (ad.length > 100) {
+          return alert('标语最长只有100个字符');
+        }
         setAd(this.itemId, ad)
           .then(() => {
             this.item.ad = ad;
