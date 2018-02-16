@@ -16,7 +16,7 @@
           <div class="card">
             <div class="card-image">
               <figure class="image is-5by4">
-                <img :src="'./static/assets/heros/'+item.id+'.jpg'">
+                <img v-lazy="'./static/assets/heros/'+item.id+'.jpg'">
               </figure>
             </div>
             <div class="card-content">
