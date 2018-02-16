@@ -104,13 +104,9 @@ export const getItem = async (id) => {
     name: card.name,
     nickname: card.nickname,
   };
-  [item.owner, item.nextPrice, item.startingPrice, item.price, item.approved, item.ad] =
+  [[item.owner, item.startingPrice, item.price, item.nextPrice], item.ad] =
     await Promise.all([
-      Promise.promisify(cryptoWaterMarginContract.ownerOf)(id),
-      Promise.promisify(cryptoWaterMarginContract.nextPriceOf)(id),
-      Promise.promisify(cryptoWaterMarginContract.startingPriceOf)(id),
-      Promise.promisify(cryptoWaterMarginContract.priceOf)(id),
-      Promise.promisify(cryptoWaterMarginContract.approvedFor)(id),
+      Promise.promisify(cryptoWaterMarginContract.allOf)(id),
       getAd(id),
     ]);
   return item;
