@@ -1,12 +1,6 @@
-import Web3 from 'web3';
 import Promise from 'bluebird';
+import web3 from '@/web3';
 import cryptoWaterMarginABI from './abi/cryptoWaterMargin.json';
-
-const rpc = 'https://ropsten.infura.io/3YGCODEa1zvOrH3kBUjL';
-
-const web3Provider = window.web3 ? window.web3.currentProvider : null;
-const web3 = web3Provider ? new Web3(web3Provider) : new Web3(new Web3.providers.HttpProvider(rpc));
-web3.eth.defaultAccount = web3.eth.accounts[0];
 
 const cryptoWaterMarginContract = web3.eth.contract(cryptoWaterMarginABI).at('0xb80107de25b619da3dcd7f7614d53b69300fe799');
 
