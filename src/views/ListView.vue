@@ -58,16 +58,13 @@ export default {
   async created() {
     this.total = await getTotal();
     const itemIds = await getItemIds(0, this.total);
-    itemIds.forEach((id) => {
-      this.loadItem(id);
-    });
+    const getItemsPromise = itemIds.map(id => getItem(id));
+    const items = await Promise.all(getItemsPromise);
+    items.sort((a, b) => a.id - b.id);
+    this.items = items;
   },
 
   methods: {
-    async loadItem(id) {
-      this.items[id] = await getItem(id);
-      this.$forceUpdate();
-    },
     toDisplayedPrice(priceInWei) {
       const readable = toReadablePrice(priceInWei);
       return `${readable.price} ${readable.unit}`;
