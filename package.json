@@ -14,7 +14,8 @@
   "dependencies": {
     "bignumber.js": "^6.0.0",
     "bluebird": "^3.5.1",
-    "request-promise": "^4.2.2",
+    "superagent": "^3.8.2",
+    "timeout-then": "^1.1.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "web3": "0.20.4"
