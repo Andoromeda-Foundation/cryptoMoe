@@ -28,7 +28,7 @@
                 </li>
                 <li>当前价格：{{toDisplayedPrice(item.price)}}</li>
               </ul>
-              <p>标语：{{item.ad}}</p>
+              <p>标语：{{toDisplayedAd(item.ad)}}</p>
             </div>
           </div>
         </div>
@@ -50,6 +50,12 @@ export default {
     toDisplayedPrice(priceInWei) {
       const readable = toReadablePrice(priceInWei);
       return `${readable.price} ${readable.unit}`;
+    },
+    toDisplayedAd(ad) {
+      if (ad && ad.length >= 10) {
+        return `${ad.slice(0, 9)} ...`;
+      }
+      return ad;
     },
   },
   watch: {},
