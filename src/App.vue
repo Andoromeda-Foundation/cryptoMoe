@@ -10,7 +10,7 @@
         <router-link v-if="!me"
                      class="navbar-item"
                      :to="{ name: 'Login'}">
-          登陆游戏
+          登录游戏
         </router-link>
 
         <router-link v-else
