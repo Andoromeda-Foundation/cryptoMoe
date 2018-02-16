@@ -12,6 +12,7 @@
            is-half-desktop
            is-one-quarter-widescreen
            is-one-quarter-fullhd">
+        <template v-if="1 <= item.id && item.id <= 114">         
         <div class="card">
           <div class="card-image">
             <figure class="image is-5by4">
@@ -24,6 +25,7 @@
             </div>
           </div>
         </div>
+      </template>    
       </router-link>
     </div>
   </div>
