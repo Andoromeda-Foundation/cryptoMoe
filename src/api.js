@@ -1,5 +1,6 @@
 import Web3 from 'web3';
 import Promise from 'bluebird';
+import request from 'request-promise';
 import cryptoWaterMarginABI from './abi/cryptoWaterMargin.json';
 
 const rpc = 'https://ropsten.infura.io/3YGCODEa1zvOrH3kBUjL';
@@ -40,3 +41,77 @@ export const getTotal = () => Promise.promisify(cryptoWaterMarginContract.totalS
 
 export const getItemIds = (offset, limit) => Promise.promisify(
   cryptoWaterMarginContract.itemsForSaleLimit)(offset, limit);
+
+export const isItemMaster = async (id) => {
+  const me = await getMe();
+  const item = await getItem(id);
+
+  return me && me.address && item && item.owner && me.address === item.owner;
+};
+
+export const getAd = async (id) => {
+  const response = await request({
+    method: 'GET',
+    uri: 'https://api.leancloud.cn/1.1/classes/ad',
+    headers: {
+      'X-LC-Id': 'R6A46DH2meySCVNM1uWOoW2M-gzGzoHsz',
+      'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB',
+    },
+    json: true,
+  });
+  const item = response.results.find(x => x.id === `${id}`);
+
+  if (item && item.ad) {
+    return item.ad;
+  }
+
+  return null;
+};
+
+export const setAd = async (id, str) => {
+  const response = await request({
+    method: 'GET',
+    uri: 'https://api.leancloud.cn/1.1/classes/ad',
+    headers: {
+      'X-LC-Id': 'R6A46DH2meySCVNM1uWOoW2M-gzGzoHsz',
+      'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB',
+    },
+    json: true,
+  });
+  const item = response.results.find(x => x.id === `${id}`);
+
+  if (item) {
+    // update
+    await request({
+      method: 'PUT',
+      uri: `https://api.leancloud.cn/1.1/classes/ad/${item.objectId}`,
+      headers: {
+        'X-LC-Id': 'R6A46DH2meySCVNM1uWOoW2M-gzGzoHsz',
+        'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB',
+      },
+      body: {
+        ad: str,
+      },
+      json: true,
+    });
+
+    return str;
+  }
+
+  // create
+  await request({
+    method: 'POST',
+    uri: 'https://api.leancloud.cn/1.1/classes/ad',
+    headers: {
+      'X-LC-Id': 'R6A46DH2meySCVNM1uWOoW2M-gzGzoHsz',
+      'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB',
+    },
+    body: {
+      id: `${id}`,
+      ad: str,
+    },
+    json: true,
+  });
+
+  return str;
+};
