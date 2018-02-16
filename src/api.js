@@ -5,7 +5,7 @@ import request from 'superagent';
 import timeout from 'timeout-then';
 import cryptoWaterMarginABI from './abi/cryptoWaterMargin.json';
 
-const cryptoWaterMarginContract = web3.eth.contract(cryptoWaterMarginABI).at('0xb80107de25b619da3dcd7f7614d53b69300fe799');
+const cryptoWaterMarginContract = web3.eth.contract(cryptoWaterMarginABI).at('0xde02fe23c4ee65816107889bbebcdbff4abaeeea');
 
 let adStore = [];
 let isInit = false;
