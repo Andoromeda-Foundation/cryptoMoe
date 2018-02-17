@@ -72,6 +72,9 @@ export default {
 
   methods: {
     onBuy() {
+      if (this.$store.state.signInError) {
+        return this.$router.push({ name: 'Login' });
+      }
       buyItem(this.itemId, this.item.price)
         .then(() => {
           alert('支付成功，请等待矿工确认，稍后再来刷新看看吧。');

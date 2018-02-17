@@ -30,8 +30,18 @@ export const init = async () => {
 init().then();
 
 export const getMe = async () => {
-  const address = web3.eth.defaultAccount;
-  return address ? { address } : null;
+  if (!window.web3) {
+    throw Error('NO_METAMASK');
+  }
+  return new Promise((resolve, reject) => {
+    web3.eth.getAccounts((error, accounts) => {
+      const address = accounts[0];
+      if (address) {
+        return resolve({ address });
+      }
+      return reject(new Error('METAMASK_LOCKED'));
+    });
+  });
 };
 
 export const getAd = async (id, time = 0) => {
