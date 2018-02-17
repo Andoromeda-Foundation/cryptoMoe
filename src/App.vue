@@ -30,7 +30,7 @@
         <div class="navbar-item">
           <div class="field is-grouped">
             <p class="control">
-              Ropsten Test Net
+              {{network.name}}
             </p>
           </div>
         </div>
@@ -47,14 +47,29 @@
 
 <script>
 import Footer from '@/components/Footer';
+import { getNetwork } from '@/api';
 
 export default {
   name: 'App',
   components: {
     Footer,
   },
-  created() {
+  data() {
+    return {
+      network: {},
+    };
+  },
+  async created() {
     this.$store.dispatch('FETCH_ME');
+    const network = await getNetwork();
+    if (!network) {
+      alert('Unknown network!');
+      return;
+    }
+    this.network = network;
+    if (!network.contract) {
+      alert(`我们还没有部署到${network.name}`);
+    }
   },
   computed: {
     key() {

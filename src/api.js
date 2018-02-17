@@ -5,7 +5,8 @@ import request from 'superagent';
 import timeout from 'timeout-then';
 import cryptoWaterMarginABI from './abi/cryptoWaterMargin.json';
 
-const cryptoWaterMarginContract = web3.eth.contract(cryptoWaterMarginABI).at('0xcd10ad61d439bf87e3c29fe6bf5e20ac82bf9114');
+const network = config.network[web3.version.network];
+const cryptoWaterMarginContract = web3.eth.contract(cryptoWaterMarginABI).at(network.contract);
 
 let adStore = [];
 let isInit = false;
@@ -147,3 +148,5 @@ export const isItemMaster = async (id) => {
 export const getItemsOf = async address => Promise.promisify(
   cryptoWaterMarginContract.tokensOf)(address)
   ;
+
+export const getNetwork = () => network;
