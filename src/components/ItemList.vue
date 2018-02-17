@@ -6,8 +6,8 @@
                  :key=item.id.toString()
                  class="column
            is-full-mobile
-           is-two-thirds-tablet
-           is-half-desktop
+           is-one-quarter-tablet
+           is-one-quarter-desktop
            is-one-quarter-widescreen
            is-one-quarter-fullhd">
       <template v-if="1 <= item.id && item.id <= 114">
