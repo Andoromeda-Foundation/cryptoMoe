@@ -16,17 +16,17 @@
       <p><strong>注意</strong>: 像MetaMask这样的数字钱包的功能与银行账户是一致的—请谨慎从事并确保不要忘记您的密码或种子词</p>
 
      <h2>3.获取以太币，您的数字货币</h2>
-      仅适用于美国公民：您可以在MetaMask中购买以太币（ETH）。ETH是一个数字货币，使我们的游戏运行成为可能。
-      对于其他人而言: 您将需要从交易所购买ETH, 然后从您的交易所钱包将ETH转入您的MetaMask钱包。遗憾的是，您无法只使用交易账户来玩以太水浒。
+      <p><strong>仅适用于美国公民</strong>：您可以在MetaMask中购买以太币（ETH）。ETH是一个数字货币，使我们的游戏运行成为可能。</p>
+      <p><strong>对于其他人而言</strong>: 您将需要从交易所购买ETH, 然后从您的交易所钱包将ETH转入您的MetaMask钱包。遗憾的是，您无法只使用交易账户来玩以太水浒。</p>
 
      <h2>向MetaMask中添加以太币</h2>
-      仅限美国公民: 您能够使用Coinbase小部件直接从MetaMask购买ETH。这更为便捷，而且不需要您创建两个账户。
-      对于其他人而言: 您需要使用普通的法定货币从交易所购买ETH。复制您的MetaMask地址，点击‘...’然后‘复制地址到粘贴板’。进入Coinbase并点击‘账户’，然后选择您的ETH钱包并点击‘发送’。将MetaMask地址粘贴入文本框内并输入您想要转账的金额。
+      <p><strong>仅限美国公民</strong>: 您能够使用Coinbase小部件直接从MetaMask购买ETH。这更为便捷，而且不需要您创建两个账户。</p>
+      <p><strong>对于其他人而言</strong>: 您需要使用普通的法定货币从交易所购买ETH。复制您的MetaMask地址，点击‘...’然后‘复制地址到粘贴板’。进入Coinbase并点击‘账户’，然后选择您的ETH钱包并点击‘发送’。将MetaMask地址粘贴入文本框内并输入您想要转账的金额。</p>
 
      <h2>什么是 CryptoGame</h2>    
-      加密游戏（CryptoGame），或者区块链游戏是指利用区块链技术制作的一类去中心化应用。最早可以追溯到 2012 诞生的 <a href="https://en.bitcoin.it/wiki/Satoshi_Dice">Satoshi Dice</a> 的赌博游戏。该游戏通过给几个不同的转账地址设置不同的赔率，在用户向这些地址转账的时候监听所产生的 Transaction Hash 进而 产生一组 0 到 65535 之间的随机数。最早的基于以太坊智能合约的游戏，则可以追溯到 <a href="https://www.reddit.com/r/ethereum/comments/44h1m1/a_new_%C3%B0app_king_of_the_ether_throne/">King of the Ether Throne</a>。
-      和许多其他的 Dapp 一样，加密游戏也面临着 Scability 所带来的性能瓶颈。
-      因此现在大部分加密游戏都只将用户的资产保存在区块链上。
+      <p>加密游戏（CryptoGame），或者区块链游戏是指利用区块链技术制作的一类去中心化应用。最早可以追溯到 2012 诞生的 <a href="https://en.bitcoin.it/wiki/Satoshi_Dice">Satoshi Dice</a> 的赌博游戏。该游戏通过给几个不同的转账地址设置不同的赔率，在用户向这些地址转账的时候监听所产生的 Transaction Hash 进而 产生一组 0 到 65535 之间的随机数。最早的基于以太坊智能合约的游戏，则可以追溯到 <a href="https://www.reddit.com/r/ethereum/comments/44h1m1/a_new_%C3%B0app_king_of_the_ether_throne/">King of the Ether Throne</a>。
+      和许多其他的 Dapp 一样，加密游戏也面临着 Scability 所带来的性能瓶颈。</p>
+      <p>因此现在大部分加密游戏都只将用户的资产保存在区块链上。</p>
     </ul>
       
     <h1>了解以太水浒</h1>
