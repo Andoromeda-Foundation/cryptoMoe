@@ -38,7 +38,7 @@
 
     </nav>
     <div class="container main-container">
-      <router-view/>
+      <router-view :key="key"></router-view>
     </div>
 
     <Footer />
@@ -57,6 +57,11 @@ export default {
     this.$store.dispatch('FETCH_ME');
   },
   computed: {
+    key() {
+      return this.$route.name !== undefined
+        ? this.$route.name + +new Date()
+        : this.$route + +new Date();
+    },
     me() {
       return this.$store.state.me;
     },
