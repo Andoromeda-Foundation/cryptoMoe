@@ -5,7 +5,7 @@
         <router-link class="navbar-item"
                      :to="{ name: 'Home'}">
           <img src="/static/assets/logo.png"
-               alt="加密水浒">&nbsp;&nbsp;加密水浒
+               alt="以太水浒">&nbsp;&nbsp;以太水浒
         </router-link>
 
         <router-link v-if="!me"
