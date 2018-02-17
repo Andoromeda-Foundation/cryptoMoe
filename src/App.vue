@@ -4,7 +4,8 @@
       <div class="navbar-brand">
         <router-link class="navbar-item"
                      :to="{ name: 'Home'}">
-          🌹 &nbsp;&nbsp;&nbsp;加密水浒
+          <img src="/static/assets/logo.png"
+               alt="加密水浒">&nbsp;&nbsp;加密水浒
         </router-link>
 
         <router-link v-if="!me"
