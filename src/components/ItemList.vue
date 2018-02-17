@@ -52,8 +52,8 @@ export default {
       return `${readable.price} ${readable.unit}`;
     },
     toDisplayedAd(ad) {
-      if (ad && ad.length >= 10) {
-        return `${ad.slice(0, 9)} ...`;
+      if (ad && ad.length >= 45) {
+        return `${ad.slice(0, 44)} ...`;
       }
       return ad;
     },
