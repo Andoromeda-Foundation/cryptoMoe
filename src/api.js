@@ -85,7 +85,7 @@ export const setAd = async (id, str) => {
       .send({
         ad: str,
       });
-
+    item.ad = str;
     return str;
   }
 
