@@ -61,7 +61,7 @@ export default {
       return this.$route.params.id;
     },
     me() {
-      return this.$store.state.me;
+      return this.$store.state.me || {};
     },
   },
   async created() {
