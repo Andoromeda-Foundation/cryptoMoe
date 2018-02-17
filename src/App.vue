@@ -40,21 +40,18 @@
       <router-view/>
     </div>
 
-    <footer class="footer">
-      <div class="container">
-        <div class="content has-text-centered">
-          <p>
-            ❤️<br> Created by Cryptogame 爱好者
-          </p>
-        </div>
-      </div>
-    </footer>
+    <Footer />
   </div>
 </template>
 
 <script>
+import Footer from '@/components/Footer';
+
 export default {
   name: 'App',
+  components: {
+    Footer,
+  },
   created() {
     this.$store.dispatch('FETCH_ME');
   },
