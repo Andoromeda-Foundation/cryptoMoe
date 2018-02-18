@@ -52,17 +52,21 @@
       </div>
 
     </nav>
+    <div v-if="infos.length > 0" class="notification is-danger content" >
+        <p v-for="(info,index) in infos" :key="index">{{info}}</p>
+    </div>
   </header>
 </template>
 
 <script>
-import { getNetwork } from '@/api';
+import { getNetwork, getAnnouncements } from '@/api';
 
 export default {
   name: 'Header',
   data() {
     return {
       network: {},
+      infos: [],
     };
   },
   async created() {
@@ -77,6 +81,14 @@ export default {
     if (!network.contract) {
       alert(`我们还没有部署到${network.name}`);
     }
+    const infos = [];
+    const announcements = await getAnnouncements();
+    announcements.forEach(({ type, content }) => {
+      if (type === 'info') {
+        infos.push(content);
+      }
+    });
+    this.infos = infos;
   },
   computed: {
     locale: {
