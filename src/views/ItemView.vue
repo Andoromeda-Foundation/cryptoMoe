@@ -22,7 +22,7 @@
               </li>
               <li>当前价格：{{toDisplayedPrice(item.price)}}</li>
             </ul>
-            <p>标语：{{ad}}</p>
+            <p class="item-ad">标语：{{ad}}</p>
             <article v-if="item.owner !== me.address"
                      class="message is-warning">
               <div class="message-body">
@@ -85,7 +85,7 @@ export default {
           alert('支付成功，请等待矿工确认，稍后再来刷新看看吧。');
         })
         .catch((e) => {
-          alert('失败了，错误看console');
+          alert('失败了，刷新网页再试试');
           console.log(e);
         });
     },
@@ -104,7 +104,7 @@ export default {
             this.$store.dispatch('FETCH_AD', this.itemId);
           })
           .catch((e) => {
-            alert('失败了，错误看console');
+            alert('失败了，刷新网页再试试');
             console.log(e);
           });
       }
@@ -113,3 +113,10 @@ export default {
   },
 };
 </script>
+ <style scoped>
+.item-ad {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+</style>

@@ -29,7 +29,7 @@
                 </li>
                 <li>当前价格：{{toDisplayedPrice(item.price)}}</li>
               </ul>
-              <p>标语：{{toDisplayedAd(item.id)}}</p>
+              <p class="item-ad">标语：{{toDisplayedAd(item.id)}}</p>
             </div>
           </div>
         </div>
@@ -82,7 +82,11 @@ export default {
   },
 };
 </script>
-<style scoped>
-
+ <style scoped>
+.item-ad {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+}
 </style>
 
