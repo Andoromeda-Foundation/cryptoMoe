@@ -29,7 +29,7 @@
                 </li>
                 <li>{{$t('Current Price')}}：{{toDisplayedPrice(item.price)}}</li>
               </ul>
-              <p class="item-ad">标语：{{toDisplayedAd(item.id)}}</p>
+              <p class="item-slogan">标语：{{toDisplayedAd(item.id)}}</p>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default {
 };
 </script>
  <style scoped>
-.item-ad {
+.item-slogan {
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-all;

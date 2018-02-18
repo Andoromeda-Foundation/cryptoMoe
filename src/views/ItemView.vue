@@ -22,7 +22,7 @@
               </li>
               <li>{{$t('Current Price')}}：{{toDisplayedPrice(item.price)}}</li>
             </ul>
-            <p class="item-ad">标语：{{ad}}</p>
+            <p class="item-slogan">标语：{{ad}}</p>
             <article v-if="item.owner !== me.address"
                      class="message is-warning">
               <div class="message-body">
@@ -114,7 +114,7 @@ export default {
 };
 </script>
  <style scoped>
-.item-ad {
+.item-slogan {
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-all;
