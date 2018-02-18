@@ -74,7 +74,7 @@ export const setAd = async (id, str) => {
   const item = adStore.find(x => x.id === `${id}`);
 
   if (item) {
-    // update
+    // update request
     await request
       .put(`https://api.leancloud.cn/1.1/classes/ad/${item.objectId}`)
       .set({
@@ -86,11 +86,12 @@ export const setAd = async (id, str) => {
       .send({
         ad: str,
       });
+    // update adStore
     item.ad = str;
     return str;
   }
 
-  // create
+  // create request
   await request
     .post('https://api.leancloud.cn/1.1/classes/ad')
     .set({
@@ -103,6 +104,7 @@ export const setAd = async (id, str) => {
       id: `${id}`,
       ad: str,
     });
+  // update adStore
   await init();
 
   return str;
