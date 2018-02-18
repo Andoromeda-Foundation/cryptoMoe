@@ -6,7 +6,9 @@ import request from 'superagent';
 import timeout from 'timeout-then';
 import cryptoWaterMarginABI from './abi/cryptoWaterMargin.json';
 
-const network = config.network[web3.version.network];
+// Sometimes, web3.version.network might be undefined,
+// as a workaround, use defaultNetwork in that case.
+const network = config.network[web3.version.network] || config.defaultNetwork;
 const cryptoWaterMarginContract = web3.eth.contract(cryptoWaterMarginABI).at(network.contract);
 
 let ggStore = [];
