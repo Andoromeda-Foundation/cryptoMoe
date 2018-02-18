@@ -21,13 +21,13 @@
             <div class="content is-small">
               <h4>{{item.nickname}} · {{item.name}}</h4>
               <ul>
-                <li>拥有者：
+                <li>{{$t('Owner')}}：
                   <router-link v-if="item.owner"
                                :to="{ name: 'User', params:{address: item.owner}}">
                     {{item.owner.slice(-6).toUpperCase()}}
                   </router-link>
                 </li>
-                <li>当前价格：{{toDisplayedPrice(item.price)}}</li>
+                <li>{{$t('Current Price')}}：{{toDisplayedPrice(item.price)}}</li>
               </ul>
               <p class="item-ad">标语：{{toDisplayedAd(item.id)}}</p>
             </div>

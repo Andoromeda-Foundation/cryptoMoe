@@ -8,6 +8,7 @@
 // This is useful when you want to reuse the state object especially for module reuse.
 // https://vuex.vuejs.org/en/modules.html#module-reuse
 export default () => ({
+  locale: '',
   me: null,
   signInError: null,
   items: {},

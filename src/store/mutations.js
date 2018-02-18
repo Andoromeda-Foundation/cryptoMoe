@@ -15,6 +15,9 @@
 import Vue from 'vue';
 
 export default {
+  setLocale(state, locale) {
+    state.locale = locale;
+  },
   SET_ME(state, me) {
     state.me = me;
   },

@@ -1,4 +1,5 @@
 import Promise from 'bluebird';
+import Cookie from 'js-cookie';
 import web3 from '@/web3';
 import * as config from '@/config';
 import request from 'superagent';
@@ -10,6 +11,7 @@ const cryptoWaterMarginContract = web3.eth.contract(cryptoWaterMarginABI).at(net
 
 let adStore = [];
 let isInit = false;
+
 
 export const init = async () => {
   await request
@@ -146,4 +148,20 @@ export const getItemsOf = async address => Promise.promisify(
   cryptoWaterMarginContract.tokensOf)(address)
   ;
 
-export const getNetwork = () => network;
+export const getNetwork = async () => {
+  const netId = await Promise.promisify(web3.version.getNetwork)();
+  return config.network[netId];
+};
+
+export const getLocale = async () => (
+  Cookie.get('locale') ||
+    (
+      navigator.language ||
+      navigator.browserLanguage ||
+      navigator.userLanguage
+    ).toLowerCase()
+);
+
+export const setLocale = async (locale) => {
+  Cookie.set('locale', locale, { expires: 365 });
+};

@@ -15,12 +15,12 @@
           <div class="content">
             <h2>{{item.nickname}} · {{item.name}}</h2>
             <ul>
-              <li>拥有者：
+              <li>{{$t('Owner')}}：
                 <router-link :to="{ name: 'User', params:{address: item.owner}}">
                   {{item.owner.slice(-6).toUpperCase()}}
                 </router-link>
               </li>
-              <li>当前价格：{{toDisplayedPrice(item.price)}}</li>
+              <li>{{$t('Current Price')}}：{{toDisplayedPrice(item.price)}}</li>
             </ul>
             <p class="item-ad">标语：{{ad}}</p>
             <article v-if="item.owner !== me.address"
@@ -32,7 +32,7 @@
           </div>
           <button v-if="item.owner !== me.address"
                   class="button is-danger"
-                  @click="onBuy">买卡</button>
+                  @click="onBuy">{{$t('Buy')}}</button>
           <button v-if="item.owner === me.address"
                   class="button is-warning"
                   @click="onUpdateAd">编辑标语</button>

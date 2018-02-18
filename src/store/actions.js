@@ -17,6 +17,14 @@
 import * as api from '@/api';
 
 export default {
+  async initLocale({ commit }) {
+    const locale = await api.getLocale();
+    commit('setLocale', locale);
+  },
+  async setLocale({ commit }, locale) {
+    await api.setLocale(locale);
+    commit('setLocale', locale);
+  },
   async FETCH_ME({ commit }) {
     try {
       const me = await api.getMe();
