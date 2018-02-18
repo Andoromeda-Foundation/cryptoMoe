@@ -10,6 +10,8 @@
 export default () => ({
   me: null,
   signInError: null,
+  items: {},
+  ads: {},
   /* Example
   msg: 'HelloWord',
   todos: [

@@ -27,6 +27,14 @@ export default {
       commit('SET_SIGN_IN_ERROR', e.message);
     }
   },
+  async FETCH_ITEM({ commit }, id) {
+    const item = await api.getItem(id);
+    commit('SET_ITEM', { id, item });
+  },
+  async FETCH_AD({ commit }, id) {
+    const ad = await api.getAd(id);
+    commit('SET_AD', { id, ad });
+  },
   /* Examples:
   increment(context) {
     context.commit('increment');

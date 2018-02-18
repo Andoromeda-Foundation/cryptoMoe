@@ -4,14 +4,14 @@
          class="loader-wrapper">
       <pulse-loader></pulse-loader>
     </div>
-    <ItemList :items='items' />
+    <ItemList :itemIds='itemIds' />
   </div>
 </template>
 
 <script>
 import PulseLoader from 'vue-spinner/src/PulseLoader';
 import ItemList from '@/components/ItemList';
-import { getTotal, getItemIds, getItem } from '@/api';
+import { getTotal, getItemIds } from '@/api';
 import { toReadablePrice } from '@/util';
 
 export default {
@@ -24,7 +24,7 @@ export default {
   data() {
     return {
       loading: true,
-      items: [],
+      itemIds: [],
       total: null,
     };
   },
@@ -34,10 +34,7 @@ export default {
   async created() {
     this.total = await getTotal();
     const itemIds = await getItemIds(0, this.total);
-    const getItemsPromise = itemIds.map(id => getItem(id));
-    const items = await Promise.all(getItemsPromise);
-    items.sort((a, b) => a.id - b.id);
-    this.items = items;
+    this.itemIds = itemIds;
     this.loading = false;
   },
 

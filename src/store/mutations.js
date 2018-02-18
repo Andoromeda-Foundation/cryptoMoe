@@ -12,12 +12,20 @@
 // Using Constants for Mutation Types
 // import * as types from './mutation-types';
 
+import Vue from 'vue';
+
 export default {
   SET_ME(state, me) {
     state.me = me;
   },
   SET_SIGN_IN_ERROR(state, error) {
     state.signInError = error;
+  },
+  SET_ITEM(state, { id, item }) {
+    Vue.set(state.items, id, item);
+  },
+  SET_AD(state, { id, ad }) {
+    Vue.set(state.ads, id, ad);
   },
   /* Examples:
   [types.ADD_TO_CART](state, payload) {

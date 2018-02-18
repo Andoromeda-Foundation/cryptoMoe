@@ -21,13 +21,13 @@
         </li>
       </ul>
     </div>
-    <ItemList :items='items' />
+    <ItemList :itemIds='itemIds' />
   </div>
 </template>
 
 <script>
 import ItemList from '@/components/ItemList';
-import { getItem, getItemsOf } from '@/api';
+import { getItemsOf } from '@/api';
 
 export default {
   name: 'UserView',
@@ -35,7 +35,7 @@ export default {
     ItemList,
   },
   data: () => ({
-    items: [],
+    itemIds: [],
   }),
 
   computed: {
@@ -47,12 +47,7 @@ export default {
     },
   },
   async created() {
-    const itemIds = await getItemsOf(this.$route.params.address);
-    const getItemsPromise = itemIds.map(id => getItem(id));
-    const items = await Promise.all(getItemsPromise);
-    items.sort((a, b) => a.id - b.id);
-    this.items = items;
-    this.loading = false;
+    this.itemIds = await getItemsOf(this.$route.params.address);
   },
 
   watch: {},

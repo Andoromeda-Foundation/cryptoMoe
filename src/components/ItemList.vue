@@ -22,13 +22,14 @@
               <h4>{{item.nickname}} · {{item.name}}</h4>
               <ul>
                 <li>拥有者：
-                  <router-link :to="{ name: 'User', params:{address: item.owner}}">
+                  <router-link v-if="item.owner"
+                               :to="{ name: 'User', params:{address: item.owner}}">
                     {{item.owner.slice(-6).toUpperCase()}}
                   </router-link>
                 </li>
                 <li>当前价格：{{toDisplayedPrice(item.price)}}</li>
               </ul>
-              <p>标语：{{toDisplayedAd(item.ad)}}</p>
+              <p>标语：{{toDisplayedAd(item.id)}}</p>
             </div>
           </div>
         </div>
@@ -42,23 +43,43 @@ import { toReadablePrice } from '@/util';
 
 export default {
   name: 'item-lists',
-  props: ['items'],
+  props: ['itemIds'],
 
-  computed: {},
+  data: () => ({}),
+
+  computed: {
+    items() {
+      return this.itemIds.map((id) => {
+        const item = this.$store.state.items[id];
+        return item || { id };
+      });
+    },
+  },
 
   methods: {
     toDisplayedPrice(priceInWei) {
       const readable = toReadablePrice(priceInWei);
       return `${readable.price} ${readable.unit}`;
     },
-    toDisplayedAd(ad) {
+    toDisplayedAd(id) {
+      const ad = this.$store.state.ads[id];
       if (ad && ad.length >= 45) {
         return `${ad.slice(0, 44)} ...`;
       }
       return ad;
     },
   },
-  watch: {},
+
+  created() {},
+
+  watch: {
+    itemIds(newItemIds) {
+      newItemIds.forEach((itemId) => {
+        this.$store.dispatch('FETCH_ITEM', itemId);
+        this.$store.dispatch('FETCH_AD', itemId);
+      });
+    },
+  },
 };
 </script>
 <style scoped>

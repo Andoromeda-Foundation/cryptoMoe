@@ -22,7 +22,7 @@
               </li>
               <li>当前价格：{{toDisplayedPrice(item.price)}}</li>
             </ul>
-            <p>标语：{{item.ad}}</p>
+            <p>标语：{{ad}}</p>
             <article v-if="item.owner !== me.address"
                      class="message is-warning">
               <div class="message-body">
@@ -46,15 +46,13 @@
 </template>
 
 <script>
-import { getItem, buyItem, setAd } from '@/api';
+import { buyItem, setAd } from '@/api';
 import { toReadablePrice } from '@/util';
 
 export default {
   name: 'item-view',
 
-  data: () => ({
-    item: undefined,
-  }),
+  data: () => ({}),
 
   computed: {
     itemId() {
@@ -63,9 +61,16 @@ export default {
     me() {
       return this.$store.state.me || {};
     },
+    item() {
+      return this.$store.state.items[this.itemId];
+    },
+    ad() {
+      return this.$store.state.ads[this.itemId];
+    },
   },
   async created() {
-    this.item = await getItem(this.itemId);
+    this.$store.dispatch('FETCH_ITEM', this.itemId);
+    this.$store.dispatch('FETCH_AD', this.itemId);
   },
 
   watch: {},
@@ -96,7 +101,7 @@ export default {
         }
         setAd(this.itemId, ad)
           .then(() => {
-            this.item.ad = ad;
+            this.$store.dispatch('FETCH_AD', this.itemId);
           })
           .catch((e) => {
             alert('失败了，错误看console');
