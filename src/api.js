@@ -8,7 +8,7 @@ import cryptoWaterMarginABI from './abi/cryptoWaterMargin.json';
 const network = config.network[web3.version.network];
 const cryptoWaterMarginContract = web3.eth.contract(cryptoWaterMarginABI).at(network.contract);
 
-let adStore = [];
+let ggStore = [];
 let isInit = false;
 
 export const init = async () => {
@@ -22,7 +22,7 @@ export const init = async () => {
     .accept('json')
     .then((response) => {
       if (response.body && response.body.results) {
-        adStore = response.body.results;
+        ggStore = response.body.results;
       }
       isInit = true;
     });
@@ -45,21 +45,21 @@ export const getMe = async () => {
   });
 };
 
-export const getAd = async (id, time = 0) => {
+export const getGg = async (id, time = 0) => {
   if (!isInit) {
-    return timeout((time + 1) * 500).then(() => getAd(id, time + 1));
+    return timeout((time + 1) * 500).then(() => getGg(id, time + 1));
   }
 
-  const item = adStore.find(x => x.id === `${id}`);
+  const item = ggStore.find(x => x.id === `${id}`);
 
-  if (item && item.ad) {
-    return item.ad;
+  if (item && item.str) {
+    return item.str;
   }
 
   return '';
 };
 
-export const setAd = async (id, str) => {
+export const setGg = async (id, str) => {
   const response = await request
     .get('https://api.leancloud.cn/1.1/classes/ad')
     .set({
@@ -69,9 +69,9 @@ export const setAd = async (id, str) => {
     .type('json')
     .accept('json');
   if (response.body && response.body.results) {
-    adStore = response.body.results;
+    ggStore = response.body.results;
   }
-  const item = adStore.find(x => x.id === `${id}`);
+  const item = ggStore.find(x => x.id === `${id}`);
 
   if (item) {
     // update request
@@ -84,10 +84,10 @@ export const setAd = async (id, str) => {
       .type('json')
       .accept('json')
       .send({
-        ad: str,
+        str,
       });
-    // update adStore
-    item.ad = str;
+    // update ggStore
+    item.str = str;
     return str;
   }
 
@@ -102,9 +102,9 @@ export const setAd = async (id, str) => {
     .accept('json')
     .send({
       id: `${id}`,
-      ad: str,
+      str,
     });
-  // update adStore
+  // update ggStore
   await init();
 
   return str;
