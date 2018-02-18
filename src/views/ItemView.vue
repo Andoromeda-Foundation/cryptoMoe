@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { buyItem, setAd } from '@/api';
+import { buyItem, setGg } from '@/api';
 import { toReadablePrice } from '@/util';
 
 export default {
@@ -99,7 +99,7 @@ export default {
         if (ad.length > 100) {
           return alert('标语最长只有100个字符');
         }
-        setAd(this.itemId, ad)
+        setGg(this.itemId, ad)
           .then(() => {
             this.$store.dispatch('FETCH_AD', this.itemId);
           })

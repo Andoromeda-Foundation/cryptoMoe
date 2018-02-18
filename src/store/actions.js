@@ -40,7 +40,7 @@ export default {
     commit('SET_ITEM', { id, item });
   },
   async FETCH_AD({ commit }, id) {
-    const ad = await api.getAd(id);
+    const ad = await api.getGg(id);
     commit('SET_AD', { id, ad });
   },
   /* Examples:
