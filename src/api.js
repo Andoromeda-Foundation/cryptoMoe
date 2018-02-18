@@ -49,6 +49,23 @@ export const getMe = async () => {
   });
 };
 
+export const getAnnouncements = async () => {
+  const response = await request
+    .get('https://api.leancloud.cn/1.1/classes/announcement')
+    .set({
+      'X-LC-Id': 'R6A46DH2meySCVNM1uWOoW2M-gzGzoHsz',
+      'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB',
+    })
+    .type('json')
+    .accept('json');
+
+  if (response.body && response.body.results) {
+    return response.body.results;
+  }
+
+  return [];
+};
+
 export const getGg = async (id, time = 0) => {
   if (!isInit) {
     return timeout((time + 1) * 500).then(() => getGg(id, time + 1));
