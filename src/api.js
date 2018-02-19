@@ -11,7 +11,7 @@ import cryptoWaterMarginABI from './abi/cryptoWaterMargin.json';
 const network = config.network[web3.version.network] || config.defaultNetwork;
 const cryptoWaterMarginContract = web3.eth.contract(cryptoWaterMarginABI).at(network.contract);
 
-let ggStore = [];
+let store = [];
 let isInit = false;
 
 
@@ -26,7 +26,7 @@ export const init = async () => {
     .accept('json')
     .then((response) => {
       if (response.body && response.body.results) {
-        ggStore = response.body.results;
+        store = response.body.results;
       }
       isInit = true;
     });
@@ -71,7 +71,7 @@ export const getGg = async (id, time = 0) => {
     return timeout((time + 1) * 500).then(() => getGg(id, time + 1));
   }
 
-  const item = ggStore.find(x => x.id === `${id}`);
+  const item = store.find(x => x.id === `${id}`);
 
   if (item && item.str) {
     return item.str;
@@ -90,9 +90,9 @@ export const setGg = async (id, str) => {
     .type('json')
     .accept('json');
   if (response.body && response.body.results) {
-    ggStore = response.body.results;
+    store = response.body.results;
   }
-  const item = ggStore.find(x => x.id === `${id}`);
+  const item = store.find(x => x.id === `${id}`);
 
   if (item) {
     // update request
@@ -107,26 +107,25 @@ export const setGg = async (id, str) => {
       .send({
         str,
       });
-    // update ggStore
+    // update store
     item.str = str;
-    return str;
+  } else {
+    // create request
+    await request
+      .post('https://api.leancloud.cn/1.1/classes/ad')
+      .set({
+        'X-LC-Id': 'R6A46DH2meySCVNM1uWOoW2M-gzGzoHsz',
+        'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB',
+      })
+      .type('json')
+      .accept('json')
+      .send({
+        id: `${id}`,
+        str,
+      });
+    // update store
+    await init();
   }
-
-  // create request
-  await request
-    .post('https://api.leancloud.cn/1.1/classes/ad')
-    .set({
-      'X-LC-Id': 'R6A46DH2meySCVNM1uWOoW2M-gzGzoHsz',
-      'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB',
-    })
-    .type('json')
-    .accept('json')
-    .send({
-      id: `${id}`,
-      str,
-    });
-  // update ggStore
-  await init();
 
   return str;
 };
@@ -185,4 +184,74 @@ export const getLocale = async () => (
 
 export const setLocale = async (locale) => {
   Cookie.set('locale', locale, { expires: 365 });
+};
+
+// 获取此卡片的推荐nextPrice，需要和卡片blockchain上的nextPrice进行比较，选择较大的创建交易
+export const getNextPrice = async (id, time = 0) => {
+  if (!isInit) {
+    return timeout((time + 1) * 500).then(() => getNextPrice(id, time + 1));
+  }
+
+  const item = store.find(x => x.id === `${id}`);
+
+  if (item && item.nextPrice) {
+    return item.nextPrice;
+  }
+
+  return 0;
+};
+
+// price为用户成功发起交易的交易价格，调用setNextPrice后，nextPrice会变为此价格的1.1倍
+export const setNextPrice = async (id, price) => {
+  const response = await request
+    .get('https://api.leancloud.cn/1.1/classes/ad')
+    .set({
+      'X-LC-Id': 'R6A46DH2meySCVNM1uWOoW2M-gzGzoHsz',
+      'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB',
+    })
+    .type('json')
+    .accept('json');
+  if (response.body && response.body.results) {
+    store = response.body.results;
+  }
+  const item = store.find(x => x.id === `${id}`);
+
+  if (item) {
+    if (price <= item.nextPrice) {
+      return item.nextPrice;
+    }
+
+    // update request
+    await request
+      .put(`https://api.leancloud.cn/1.1/classes/ad/${item.objectId}`)
+      .set({
+        'X-LC-Id': 'R6A46DH2meySCVNM1uWOoW2M-gzGzoHsz',
+        'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB',
+      })
+      .type('json')
+      .accept('json')
+      .send({
+        nextPrice: price * 1.1,
+      });
+    // update store
+    item.nextPrice = price * 1.1;
+  } else {
+    // create request
+    await request
+      .post('https://api.leancloud.cn/1.1/classes/ad')
+      .set({
+        'X-LC-Id': 'R6A46DH2meySCVNM1uWOoW2M-gzGzoHsz',
+        'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB',
+      })
+      .type('json')
+      .accept('json')
+      .send({
+        id: `${id}`,
+        nextPrice: price * 1.1,
+      });
+    // update store
+    await init();
+  }
+
+  return price * 1.1;
 };
