@@ -49,7 +49,7 @@ export default {
 
   computed: {
     items() {
-      return this.itemIds.map((id) => {
+      return this.itemIds.sort((a, b) => a - b).map((id) => {
         const item = this.$store.state.items[id];
         return item || { id };
       });
