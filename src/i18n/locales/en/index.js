@@ -1,3 +1,5 @@
+const FAQs_CONTENT = require('raw-loader!./faq.html');
+
 module.exports = {
   CryptoHero: 'CryptoHero',
   'My Cards': 'My Cards',
@@ -11,4 +13,5 @@ module.exports = {
   Privacy: 'Privacy',
   Contact: 'Contact',
   Slogan: 'Slogan',
+  FAQs_CONTENT,
 };

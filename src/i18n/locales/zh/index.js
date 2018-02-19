@@ -1,3 +1,5 @@
+const FAQs_CONTENT = require('raw-loader!./faq.html');
+
 module.exports = {
   CryptoHero: '以太水浒',
   'My Cards': '我的卡牌',
@@ -11,4 +13,5 @@ module.exports = {
   Privacy: '隐私政策',
   Contact: '联系我们',
   Slogan: '标语',
+  FAQs_CONTENT,
 };
