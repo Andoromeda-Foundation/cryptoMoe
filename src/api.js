@@ -131,68 +131,6 @@ export const setGg = async (id, str) => {
   return str;
 };
 
-export const getItem = async (id) => {
-  const exist = await Promise.promisify(cryptoWaterMarginContract.tokenExists)(id);
-  if (!exist) return null;
-  const card = config.cards[id] || {};
-  const item = {
-    id,
-    name: card.name,
-    nickname: card.nickname,
-  };
-  try {
-    [[item.owner, item.price, item.nextPrice], item.estPrice] = await Promise.all([
-      Promise.promisify(cryptoWaterMarginContract.allOf)(id),
-      getNextPrice(id)]);
-    item.price = BigNumber.maximum(item.price, item.estPrice);
-  } catch (e) {
-    console.log(e);
-  }
-  return item;
-};
-
-export const buyItem = (id, price) => new Promise((resolve, reject) => {
-  cryptoWaterMarginContract.buy(id, {
-    value: price, // web3.toWei(Number(price), 'ether'),
-    gas: 220000,
-  },
-  (err, result) => (err ? reject(err) : resolve(result)));
-});
-
-export const getTotal = () => Promise.promisify(cryptoWaterMarginContract.totalSupply)();
-
-export const getItemIds = (offset, limit) => Promise.promisify(
-  cryptoWaterMarginContract.itemsForSaleLimit)(offset, limit);
-
-export const isItemMaster = async (id) => {
-  const me = await getMe();
-  const item = await getItem(id);
-
-  return me && me.address && item && item.owner && me.address === item.owner;
-};
-
-export const getItemsOf = async address => Promise.promisify(
-  cryptoWaterMarginContract.tokensOf)(address)
-  ;
-
-export const getNetwork = async () => {
-  const netId = await Promise.promisify(web3.version.getNetwork)();
-  return config.network[netId];
-};
-
-export const getLocale = async () => (
-  Cookie.get('locale') ||
-  (
-    navigator.language ||
-    navigator.browserLanguage ||
-    navigator.userLanguage
-  ).toLowerCase()
-);
-
-export const setLocale = async (locale) => {
-  Cookie.set('locale', locale, { expires: 365 });
-};
-
 // 获取此卡片的推荐nextPrice，需要和卡片blockchain上的nextPrice进行比较，选择较大的创建交易
 export const getNextPrice = async (id, time = 0) => {
   if (!isInit) {
@@ -268,4 +206,62 @@ export const setNextPrice = async (id, priceInWei) => {
   }
 
   return price * 1.1;
+};
+
+export const getItem = async (id) => {
+  const exist = await Promise.promisify(cryptoWaterMarginContract.tokenExists)(id);
+  if (!exist) return null;
+  const card = config.cards[id] || {};
+  const item = {
+    id,
+    name: card.name,
+    nickname: card.nickname,
+  };
+  [[item.owner, item.price, item.nextPrice], item.estPrice] = await Promise.all([
+    Promise.promisify(cryptoWaterMarginContract.allOf)(id),
+    getNextPrice(id)]);
+  item.price = BigNumber.maximum(item.price, item.estPrice);
+  return item;
+};
+
+export const buyItem = (id, price) => new Promise((resolve, reject) => {
+  cryptoWaterMarginContract.buy(id, {
+    value: price, // web3.toWei(Number(price), 'ether'),
+    gas: 220000,
+  },
+  (err, result) => (err ? reject(err) : resolve(result)));
+});
+
+export const getTotal = () => Promise.promisify(cryptoWaterMarginContract.totalSupply)();
+
+export const getItemIds = (offset, limit) => Promise.promisify(
+  cryptoWaterMarginContract.itemsForSaleLimit)(offset, limit);
+
+export const isItemMaster = async (id) => {
+  const me = await getMe();
+  const item = await getItem(id);
+
+  return me && me.address && item && item.owner && me.address === item.owner;
+};
+
+export const getItemsOf = async address => Promise.promisify(
+  cryptoWaterMarginContract.tokensOf)(address)
+  ;
+
+export const getNetwork = async () => {
+  const netId = await Promise.promisify(web3.version.getNetwork)();
+  return config.network[netId];
+};
+
+export const getLocale = async () => (
+  Cookie.get('locale') ||
+  (
+    navigator.language ||
+    navigator.browserLanguage ||
+    navigator.userLanguage
+  ).toLowerCase()
+);
+
+export const setLocale = async (locale) => {
+  Cookie.set('locale', locale, { expires: 365 });
 };
