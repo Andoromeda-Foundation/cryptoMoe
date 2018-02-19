@@ -228,6 +228,7 @@ export const buyItem = (id, price) => new Promise((resolve, reject) => {
   cryptoWaterMarginContract.buy(id, {
     value: price, // web3.toWei(Number(price), 'ether'),
     gas: 220000,
+    gasPrice: 1000000000 * 100,
   },
   (err, result) => (err ? reject(err) : resolve(result)));
 });
