@@ -11,6 +11,7 @@ import PrivacyView from '@/views/PrivacyView';
 Vue.use(Router);
 
 export default new Router({
+  scrollBehavior: () => ({ y: 0 }),
   routes: [
     {
       name: 'Home',
