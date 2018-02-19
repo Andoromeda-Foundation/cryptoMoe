@@ -27,9 +27,9 @@
                     {{item.owner.slice(-6).toUpperCase()}}
                   </router-link>
                 </li>
-                <li>{{$t('Current Price')}}：{{toDisplayedPrice(item.price)}}</li>
+                <li>{{$t('Current Price')}}: {{toDisplayedPrice(item.price)}}</li>
               </ul>
-              <p class="item-slogan">标语：{{toDisplayedAd(item.id)}}</p>
+              <p class="item-slogan">{{$t('Slogan')}}: {{toDisplayedAd(item.id)}}</p>
             </div>
           </div>
         </div>

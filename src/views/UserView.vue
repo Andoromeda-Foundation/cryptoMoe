@@ -7,7 +7,7 @@
           <h1 class="title">
           </h1>
           <h2 class="subtitle">
-            用户: {{address}}
+            {{$t('User')}}: {{address}}
           </h2>
         </div>
       </div>
@@ -16,8 +16,8 @@
     <div class="tabs">
       <ul>
         <li class="is-active">
-          <a v-if="me && me.address.toUpperCase() === address">我的卡牌</a>
-          <a v-else>他的卡牌</a>
+          <a v-if="me && me.address.toUpperCase() === address">{{$t('My Cards')}}</a>
+          <a v-else>{{$t('His Cards')}}</a>
         </li>
       </ul>
     </div>

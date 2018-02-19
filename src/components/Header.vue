@@ -79,7 +79,7 @@ export default {
     }
     this.network = network;
     if (!network.contract) {
-      alert(`我们还没有部署到${network.name}`);
+      alert(`Unsupported ${network.name}`);
     }
     const infos = [];
     const announcements = await getAnnouncements();

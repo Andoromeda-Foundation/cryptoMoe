@@ -22,11 +22,11 @@
               </li>
               <li>{{$t('Current Price')}}：{{toDisplayedPrice(item.price)}}</li>
             </ul>
-            <p class="item-slogan">标语：{{ad}}</p>
+            <p class="item-slogan">{{$t('Slogan')}}: {{ad}}</p>
             <article v-if="item.owner !== me.address"
                      class="message is-warning">
               <div class="message-body">
-                购买此卡后，您可以编辑标语
+                {{$t('EDIT_SLOGAN_TIP')}}
               </div>
             </article>
           </div>
@@ -35,7 +35,7 @@
                   @click="onBuy">{{$t('Buy')}}</button>
           <button v-if="item.owner === me.address"
                   class="button is-warning"
-                  @click="onUpdateAd">编辑标语</button>
+                  @click="onUpdateAd">{{$t('Edit Slogan')}}</button>
         </div>
       </div>
     </div>
@@ -82,10 +82,11 @@ export default {
       }
       buyItem(this.itemId, this.item.price)
         .then(() => {
-          alert('支付成功，请等待矿工确认，稍后再来刷新看看吧。');
+          alert(this.$t('BUY_SUCCESS_MSG'));
         })
         .catch((e) => {
-          alert('失败了，刷新网页再试试');
+          alert(this.$t('BUY_FAIL_MSG'));
+
           console.log(e);
         });
     },
@@ -94,17 +95,17 @@ export default {
       return `${readable.price} ${readable.unit}`;
     },
     async onUpdateAd() {
-      const ad = prompt('请输入您的标语内容：');
+      const ad = prompt(this.$t('UPDATE_SLOGAN_PROMPT'));
       if (ad !== null) {
         if (ad.length > 100) {
-          return alert('标语最长只有100个字符');
+          return alert(this.$t('UPDATE_SLOGAN_FAIL_TOO_LOOG_MSG'));
         }
         setGg(this.itemId, ad)
           .then(() => {
             this.$store.dispatch('FETCH_AD', this.itemId);
           })
           .catch((e) => {
-            alert('失败了，刷新网页再试试');
+            alert(this.$t('UPDATE_SLOGAN_FAIL_MSG'));
             console.log(e);
           });
       }

@@ -6,11 +6,11 @@
           <div class="content">
             <router-link class="navbar-item"
                          :to="{ name: 'Home'}">
-              首页
+              {{$t('Home')}}
             </router-link>
             <router-link class="navbar-item"
                          :to="{ name: 'FAQ'}">
-              常见问题
+              {{$t('FAQs')}}
             </router-link>
           </div>
         </div>
@@ -18,17 +18,17 @@
           <div class="content">
             <router-link class="navbar-item"
                          :to="{ name: 'Term'}">
-              使用条款
+              {{$t('Terms of Service')}}
             </router-link>
             <router-link class="navbar-item"
                          :to="{ name: 'Privacy'}">
-              隐私政策
+              {{$t('Privacy Policy')}}
             </router-link>
           </div>
         </div>
         <div class="column is-4">
           <div class="content">
-            <span>联系我们</span>
+            <span> {{$t('Contact Us')}}</span>
             <a href="http://t.me/CryptoHero_Official"
                target="_blank">
               @Telegram
@@ -39,8 +39,9 @@
       <div class="content has-text-centered">
         <p>
           <small>
+            All rights reserved. <br>
             &copy; Copyright 2018
-            <strong>cryptohero.pro</strong>
+            <strong>CryptoHero.pro</strong>
           </small>
         </p>
       </div>
