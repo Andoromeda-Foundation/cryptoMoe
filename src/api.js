@@ -235,8 +235,10 @@ export const buyItem = (id, price) => new Promise((resolve, reject) => {
 
 export const getTotal = () => Promise.promisify(cryptoWaterMarginContract.totalSupply)();
 
-export const getItemIds = (offset, limit) => Promise.promisify(
-  cryptoWaterMarginContract.itemsForSaleLimit)(offset, limit);
+export const getItemIds = async (offset, limit) => {
+  const ids = await Promise.promisify(cryptoWaterMarginContract.itemsForSaleLimit)(offset, limit);
+  return ids.sort((a, b) => a - b);
+};
 
 export const isItemMaster = async (id) => {
   const me = await getMe();
