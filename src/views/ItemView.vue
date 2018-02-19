@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import { buyItem, setGg } from '@/api';
+import { buyItem, setGg, setNextPrice } from '@/api';
 import { toReadablePrice } from '@/util';
 
 export default {
@@ -104,6 +104,7 @@ export default {
       buyItem(this.itemId, buyPrice)
         .then(() => {
           alert(this.$t('BUY_SUCCESS_MSG'));
+          setNextPrice(this.itemId, buyPrice);
         })
         .catch((e) => {
           alert(this.$t('BUY_FAIL_MSG'));

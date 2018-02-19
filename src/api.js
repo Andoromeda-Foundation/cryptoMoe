@@ -1,5 +1,6 @@
 import Promise from 'bluebird';
 import Cookie from 'js-cookie';
+import { BigNumber } from 'bignumber.js';
 import web3 from '@/web3';
 import * as config from '@/config';
 import request from 'superagent';
@@ -139,8 +140,14 @@ export const getItem = async (id) => {
     name: card.name,
     nickname: card.nickname,
   };
-  [item.owner, item.price, item.nextPrice] =
-    await Promise.promisify(cryptoWaterMarginContract.allOf)(id);
+  try {
+    [[item.owner, item.price, item.nextPrice], item.estPrice] = await Promise.all([
+      Promise.promisify(cryptoWaterMarginContract.allOf)(id),
+      getNextPrice(id)]);
+    item.price = BigNumber.maximum(item.price, item.estPrice);
+  } catch (e) {
+    console.log(e);
+  }
   return item;
 };
 
@@ -175,11 +182,11 @@ export const getNetwork = async () => {
 
 export const getLocale = async () => (
   Cookie.get('locale') ||
-    (
-      navigator.language ||
-      navigator.browserLanguage ||
-      navigator.userLanguage
-    ).toLowerCase()
+  (
+    navigator.language ||
+    navigator.browserLanguage ||
+    navigator.userLanguage
+  ).toLowerCase()
 );
 
 export const setLocale = async (locale) => {
@@ -195,14 +202,17 @@ export const getNextPrice = async (id, time = 0) => {
   const item = store.find(x => x.id === `${id}`);
 
   if (item && item.nextPrice) {
-    return item.nextPrice;
+    // Convert nextPrice from 'ether' to 'wei'
+    return web3.toWei(item.nextPrice, 'ether');
   }
 
   return 0;
 };
 
 // price为用户成功发起交易的交易价格，调用setNextPrice后，nextPrice会变为此价格的1.1倍
-export const setNextPrice = async (id, price) => {
+export const setNextPrice = async (id, priceInWei) => {
+  // Convert price(Wei) to a number instance (ether)
+  const price = Number(web3.fromWei(priceInWei, 'ether').toString());
   const response = await request
     .get('https://api.leancloud.cn/1.1/classes/ad')
     .set({
