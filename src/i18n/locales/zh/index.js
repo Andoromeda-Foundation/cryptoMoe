@@ -22,5 +22,8 @@ module.exports = {
   UPDATE_SLOGAN_FAIL_MSG: '失败了，刷新网页再试试.',
   User: '用户',
   'His Cards': 'TA的卡牌',
+  BUY_BTN: '正价买入',
+  PREMIUM_BUY_BTN: '溢价{rate}买入',
+  BUY_PRICE_TIP: '出价越高，抢到的几率越大.',
   FAQs_CONTENT,
 };

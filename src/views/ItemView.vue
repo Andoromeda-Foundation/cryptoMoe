@@ -30,9 +30,29 @@
               </div>
             </article>
           </div>
-          <button v-if="item.owner !== me.address"
-                  class="button is-danger"
-                  @click="onBuy">{{$t('Buy')}}</button>
+
+          <template v-if="item.owner !== me.address">
+            <div class="buttons">
+              <button class="button is-danger is-outlined"
+                      @click="onBuy(1)">{{ $t('BUY_BTN') }}</button>
+              <button class="button is-danger is-outlined"
+                      @click="onBuy(1.1)">{{ $t('PREMIUM_BUY_BTN', { rate: '10%' }) }}</button>
+              <button class="button is-danger is-outlined"
+                      @click="onBuy(1.2)">{{ $t('PREMIUM_BUY_BTN', { rate: '20%' }) }}</button>
+              <button class="button is-danger is-outlined"
+                      @click="onBuy(1.3)">{{ $t('PREMIUM_BUY_BTN', { rate: '30%' }) }}</button>
+              <button class="button is-danger is-outlined"
+                      @click="onBuy(1.4)">{{ $t('PREMIUM_BUY_BTN', { rate: '40%' }) }}</button>
+              <button class="button is-danger is-outlined"
+                      @click="onBuy(1.5)">{{ $t('PREMIUM_BUY_BTN', { rate: '50%' }) }}</button>
+            </div>
+            <article class="message is-danger">
+              <div class="message-body">
+                {{$t('BUY_PRICE_TIP')}}
+              </div>
+            </article>
+          </template>
+
           <button v-if="item.owner === me.address"
                   class="button is-warning"
                   @click="onUpdateAd">{{$t('Edit Slogan')}}</button>
@@ -76,17 +96,17 @@ export default {
   watch: {},
 
   methods: {
-    onBuy() {
+    onBuy(rate) {
       if (this.$store.state.signInError) {
         return this.$router.push({ name: 'Login' });
       }
-      buyItem(this.itemId, this.item.price)
+      const buyPrice = this.item.price.times(rate).toFixed(0);
+      buyItem(this.itemId, buyPrice)
         .then(() => {
           alert(this.$t('BUY_SUCCESS_MSG'));
         })
         .catch((e) => {
           alert(this.$t('BUY_FAIL_MSG'));
-
           console.log(e);
         });
     },

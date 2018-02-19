@@ -21,5 +21,8 @@ module.exports = {
   'Edit Slogan': 'Edit Slogan',
   User: 'User',
   'His Cards': 'His/Her Cards',
+  BUY_BTN: 'Buy',
+  PREMIUM_BUY_BTN: '{rate} Premium to buy',
+  BUY_PRICE_TIP: 'The higher the bid, the greater the chance of getting it.',
   FAQs_CONTENT,
 };
