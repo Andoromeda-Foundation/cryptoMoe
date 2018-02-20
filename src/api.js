@@ -217,10 +217,13 @@ export const getItem = async (id) => {
     name: card.name,
     nickname: card.nickname,
   };
-  [[item.owner, item.price, item.nextPrice], item.estPrice] = await Promise.all([
-    Promise.promisify(cryptoWaterMarginContract.allOf)(id),
-    getNextPrice(id)]);
-  item.price = BigNumber.maximum(item.price, item.estPrice);
+  [item.owner, item.price, item.nextPrice] =
+    await Promise.promisify(cryptoWaterMarginContract.allOf)(id);
+
+  // [[item.owner, item.price, item.nextPrice], item.estPrice] = await Promise.all([
+  //   Promise.promisify(cryptoWaterMarginContract.allOf)(id),
+  //   getNextPrice(id)]);
+  // item.price = BigNumber.maximum(item.price, item.estPrice);
   return item;
 };
 
@@ -230,7 +233,7 @@ export const buyItem = (id, price) => new Promise((resolve, reject) => {
     gas: 220000,
     gasPrice: 1000000000 * 100,
   },
-  (err, result) => (err ? reject(err) : resolve(result)));
+    (err, result) => (err ? reject(err) : resolve(result)));
 });
 
 export const getTotal = () => Promise.promisify(cryptoWaterMarginContract.totalSupply)();
