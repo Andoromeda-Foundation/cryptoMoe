@@ -1,4 +1,6 @@
 const FAQs_CONTENT = require('raw-loader!./faq.html');
+const PRIVACY_CONTENT = require('raw-loader!./privacy.html');
+const TERMS_CONTENT = require('raw-loader!./terms.html');
 
 module.exports = {
   CryptoHero: 'CryptoHero',
@@ -25,4 +27,6 @@ module.exports = {
   PREMIUM_BUY_BTN: '{rate} Premium to buy',
   BUY_PRICE_TIP: 'The higher the bid, the greater the chance of getting it. Use 100+gas to make the transaction proved fast!',
   FAQs_CONTENT,
+  PRIVACY_CONTENT,
+  TERMS_CONTENT,
 };

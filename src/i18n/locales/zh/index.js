@@ -1,4 +1,6 @@
 const FAQs_CONTENT = require('raw-loader!./faq.html');
+const PRIVACY_CONTENT = require('raw-loader!./privacy.html');
+const TERMS_CONTENT = require('raw-loader!./terms.html');
 
 module.exports = {
   CryptoHero: '以太水浒',
@@ -26,4 +28,6 @@ module.exports = {
   PREMIUM_BUY_BTN: '溢价{rate}买入',
   BUY_PRICE_TIP: '出价越高，抢到的几率越大! 推荐使用100+gas，提高交易确认速度！',
   FAQs_CONTENT,
+  PRIVACY_CONTENT,
+  TERMS_CONTENT,
 };
