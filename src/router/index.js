@@ -7,6 +7,7 @@ import FaqView from '@/views/FaqView';
 import UserView from '@/views/UserView';
 import TermView from '@/views/TermView';
 import PrivacyView from '@/views/PrivacyView';
+import BirthdayGiftView from '@/views/BirthdayGiftView';
 
 Vue.use(Router);
 
@@ -49,5 +50,10 @@ export default new Router({
       path: '/terms-of-us',
       component: TermView,
     },
+    {
+      name: 'BirthdayGift',
+      path: '/birthday-gift',
+      component: BirthdayGiftView,
+    },    
   ],
 });

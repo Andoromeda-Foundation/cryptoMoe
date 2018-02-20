@@ -1,21 +1,20 @@
- const FAQs_CONTENT = require('raw-loader!./faq.html');
+const FAQs_CONTENT = require('raw-loader!./faq.html');
 const PRIVACY_CONTENT = require('raw-loader!./privacy.html');
 const TERMS_CONTENT = require('raw-loader!./terms.html');
 
 module.exports = {
-  CryptoHero: 'CryptoHero',
-  'My Cards': 'My Cards',
+  CryptoHero: 'ホーム',
+  'My Cards': 'コレクション',
   'Sign In': 'Sign In',
-  Home: 'Home',
-  FAQs: 'FAQs',
+  Home: 'ホーム',
+  FAQs: 'よくある質問',
   Owner: 'Owner',
   'Current Price': 'Current Price',
   Buy: 'Buy',
-  BirthdayGift: 'Birthday Gift',  
   'Terms of Service': 'Terms',
   'Privacy Policy': 'Privacy',
   'Contact Us': 'Contact',
-  Slogan: 'Slogan',
+  Slogan: 'スローガン',
   UPDATE_SLOGAN_PROMPT: 'Please enter your slogan (Up to 100 characters):',
   UPDATE_SLOGAN_FAIL_TOO_LOOG_MSG: 'The slogan can only be 100 characters long.',
   EDIT_SLOGAN_TIP: 'After purchasing this card, you can edit the slogan.',
