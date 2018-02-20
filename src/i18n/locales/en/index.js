@@ -11,7 +11,7 @@ module.exports = {
   Owner: 'Owner',
   'Current Price': 'Current Price',
   Buy: 'Buy',
-  BirthdayGift: 'Birthday Gift',  
+  BirthdayGift: 'Birthday Tribute(HOT)',  
   'Terms of Service': 'Terms',
   'Privacy Policy': 'Privacy',
   'Contact Us': 'Contact',
