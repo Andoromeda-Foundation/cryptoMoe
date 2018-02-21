@@ -1,11 +1,13 @@
 <template>
   <div>
-    <div class="moe-bg"></div>
-    <div class="moe-banner">
-      <div class="moe-title">以太萌王</div>
-      <div class="moe-slogan">君王乱斗，王权之争，谁是你心目中的最强帝王！</div>
+    <div v-if="$route.name === 'Home'">
+      <div class="moe-bg"></div>
+      <div class="moe-banner">
+        <div class="moe-title">以太萌王</div>
+        <div class="moe-slogan">君王乱斗，王权之争，谁是你心目中的最强帝王！</div>
+      </div>
     </div>
-    <div id="app">
+    <div id="app" :class="[$route.name === 'Home' ? homeAppClass : '']">
       <Header />
 
       <div class="container main-container">
@@ -26,6 +28,11 @@ export default {
   components: {
     Header,
     Footer
+  },
+  data: {
+    homeAppClass: {
+      marginTop: '50rem',
+    },
   },
   computed: {
     key() {
@@ -53,8 +60,8 @@ export default {
   font-size: 30px;
 }
 .main-container {
-  margin-top: 55rem;
-  margin-bottom: 2rem;
+  margin-top: 6rem;
+  margin-bottom: 6rem;
   padding-left: 1rem;
   padding-right: 1rem;
 }
