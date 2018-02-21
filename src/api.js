@@ -5,12 +5,12 @@ import web3 from '@/web3';
 import * as config from '@/config';
 import request from 'superagent';
 import timeout from 'timeout-then';
-import cryptoWaterMarginABI from './abi/cryptoWaterMargin.json';
+import cryptoMoeABI from './abi/cryptoMoe.json';
 
 // Sometimes, web3.version.network might be undefined,
 // as a workaround, use defaultNetwork in that case.
 const network = config.network[web3.version.network] || config.defaultNetwork;
-const cryptoWaterMarginContract = web3.eth.contract(cryptoWaterMarginABI).at(network.contract);
+const cryptoMoeContract = web3.eth.contract(cryptoMoeABI).at(network.contract);
 
 let store = [];
 let isInit = false;
@@ -209,22 +209,22 @@ export const setNextPrice = async (id, priceInWei) => {
 };
 
 export const getItem = async (id) => {
-  const exist = await Promise.promisify(cryptoWaterMarginContract.tokenExists)(id);
+  const exist = await Promise.promisify(cryptoMoeContract.tokenExists)(id);
   if (!exist) return null;
   const card = config.cards[id] || {};
   const item = card;
   [item.owner, item.price, item.nextPrice] =
-    await Promise.promisify(cryptoWaterMarginContract.allOf)(id);
+    await Promise.promisify(cryptoMoeContract.allOf)(id);
 
   // [[item.owner, item.price, item.nextPrice], item.estPrice] = await Promise.all([
-  //   Promise.promisify(cryptoWaterMarginContract.allOf)(id),
+  //   Promise.promisify(cryptoMoeContract.allOf)(id),
   //   getNextPrice(id)]);
   // item.price = BigNumber.maximum(item.price, item.estPrice);
   return item;
 };
 
 export const buyItem = (id, price) => new Promise((resolve, reject) => {
-  cryptoWaterMarginContract.buy(id, {
+  cryptoMoeContract.buy(id, {
     value: price, // web3.toWei(Number(price), 'ether'),
     gas: 220000,
     gasPrice: 1000000000 * 100,
@@ -232,10 +232,19 @@ export const buyItem = (id, price) => new Promise((resolve, reject) => {
   (err, result) => (err ? reject(err) : resolve(result)));
 });
 
-export const getTotal = () => Promise.promisify(cryptoWaterMarginContract.totalSupply)();
+export const setPrice = (id, price) => new Promise((resolve, reject) => {
+  cryptoMoeContract.changePrice(id, price, {
+    value: 0,
+    gas: 220000,
+    gasPrice: 1000000000 * 100,
+  },
+  (err, result) => (err ? reject(err) : resolve(result)));
+});
+
+export const getTotal = () => Promise.promisify(cryptoMoeContract.totalSupply)();
 
 export const getItemIds = async (offset, limit) => {
-  let ids = await Promise.promisify(cryptoWaterMarginContract.itemsForSaleLimit)(offset, limit);
+  let ids = await Promise.promisify(cryptoMoeContract.itemsForSaleLimit)(offset, limit);
   ids = ids.map(id => id.toNumber());
   ids.sort((a, b) => a - b);
   return Array.from(new Set(ids));
@@ -250,7 +259,7 @@ export const isItemMaster = async (id) => {
 
 export const getItemsOf = async (address) => {
   let ids = await Promise.promisify(
-    cryptoWaterMarginContract.tokensOf)(address)
+    cryptoMoeContract.tokensOf)(address)
     ;
   ids = ids.map(id => id.toNumber());
   ids.sort((a, b) => a - b);

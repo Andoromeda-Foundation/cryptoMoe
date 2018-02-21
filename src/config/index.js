@@ -6,7 +6,7 @@ export const network = {
   1: {
     default: true, // It will be used when no metaMask
     name: 'Main Ethereum Network',
-    contract: '0xd0792ac0de7ef31197c5f452b21a34389ecc725f',
+    contract: '',
     rpc: 'https://mainnet.infura.io/lTETGFVyQX99UKQ98BN4',
   },
   2: {
@@ -15,7 +15,7 @@ export const network = {
   },
   3: {
     name: 'Ropsten Test Network',
-    contract: '',
+    contract: '0xC4D3D677085CfFf5C5A6aB52a203fE07Ddb9A8b0',
     rpc: 'https://ropsten.infura.io/lTETGFVyQX99UKQ98BN4',
   },
   4: {

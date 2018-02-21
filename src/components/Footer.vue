@@ -29,11 +29,11 @@
         <div class="column is-4">
           <div class="content">
             <span> {{$t('Contact Us')}}</span>
-            <p><a href="http://t.me/CryptoHero_Official"
+            <p><a href="http://t.me/cryptomoe_Official"
                target="_blank">
               @Telegram
             </a></p>
-            <p><a href="https://discord.gg/nMXUYGQ"
+            <p><a href="https://discord.gg/xMUJr"
                target="_blank">
               @Discord
             </a></p>

@@ -92,6 +92,8 @@ export default {
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-all;
+  display: block;
+  height: 20px;
 }
 .card {
   height: 625px;
