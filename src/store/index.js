@@ -9,6 +9,7 @@ import actions from './actions';
 
 Vue.use(Vuex);
 
+export const strict = false;
 export default new Vuex.Store({
   state,
   getters,

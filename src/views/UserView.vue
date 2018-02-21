@@ -1,7 +1,6 @@
 <template>
   <div>
-    <section class="hero user-info-wrapper"
-             v-bind:style="{ backgroundColor: '#'+address.slice(-6)}">
+    <section class="hero user-info-wrapper">
       <div class="hero-body">
         <div class="container">
           <h1 class="title">

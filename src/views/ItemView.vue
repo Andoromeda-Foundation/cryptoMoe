@@ -146,7 +146,7 @@ export default {
       if (this.$store.state.signInError) {
         return this.$router.push({ name: 'Login' });
       }
-      const buyPrice = this.customizedPrice.toFixed(0);
+      const buyPrice = parseFloat(this.customizedPrice).toFixed(0);
       buyItem(this.itemId, buyPrice)
         .then(() => {
           alert(this.$t('BUY_SUCCESS_MSG'));
