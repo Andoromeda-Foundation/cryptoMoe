@@ -1,4 +1,4 @@
-# cryptoroses
+# cryptomoe
 
 > A Vue.js project
 
