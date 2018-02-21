@@ -15,7 +15,7 @@ export const network = {
   },
   3: {
     name: 'Ropsten Test Network',
-    contract: '0xC4D3D677085CfFf5C5A6aB52a203fE07Ddb9A8b0',
+    contract: '0xDCc3BcA50861263bf5B7227b49d35Cf7B8594D2a',
     rpc: 'https://ropsten.infura.io/lTETGFVyQX99UKQ98BN4',
   },
   4: {
