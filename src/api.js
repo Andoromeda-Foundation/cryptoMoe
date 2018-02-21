@@ -216,6 +216,19 @@ export const getItem = async (id) => {
     id,
     name: card.name,
     nickname: card.nickname,
+    hair_color: card.hair_color,
+    eye_color: card.eye_color,
+    height: card.height,
+    weight: card.weight,
+    moe_point: card.moe_point,
+    birth_place: card.birth_place,
+    cp: card.cp,
+    introduce: card.introduce,
+    historical_prototype: card.historical_prototype,
+    idol_point: card.idol_point,
+    role_base: card.role_base,
+    Neta: card.Neta,
+    video: card.video
   };
   [item.owner, item.price, item.nextPrice] =
     await Promise.promisify(cryptoWaterMarginContract.allOf)(id);
