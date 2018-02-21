@@ -48,6 +48,6 @@ export const i18n = [
   {
     langDisplay: '日本語',
     locale: 'jp',
-    aliases: ['jp'],
-  },  
+    aliases: ['jp', 'ja', 'ja-jp'],
+  },
 ];
