@@ -252,9 +252,14 @@ export const isItemMaster = async (id) => {
   return me && me.address && item && item.owner && me.address === item.owner;
 };
 
-export const getItemsOf = async address => Promise.promisify(
-  cryptoWaterMarginContract.tokensOf)(address)
-  ;
+export const getItemsOf = async (address) => {
+  let ids = await Promise.promisify(
+    cryptoWaterMarginContract.tokensOf)(address)
+    ;
+  ids = ids.map(id => id.toNumber());
+  ids.sort((a, b) => a - b);
+  return Array.from(new Set(ids));
+};
 
 export const getNetwork = async () => {
   const netId = await Promise.promisify(web3.version.getNetwork)();
