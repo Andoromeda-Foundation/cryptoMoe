@@ -18,7 +18,7 @@ let isInit = false;
 
 export const init = async () => {
   await request
-    .get('https://api.leancloud.cn/1.1/classes/ad')
+    .get('https://api.leancloud.cn/1.1/classes/moe')
     .set({
       'X-LC-Id': 'R6A46DH2meySCVNM1uWOoW2M-gzGzoHsz',
       'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB',
@@ -83,7 +83,7 @@ export const getGg = async (id, time = 0) => {
 
 export const setGg = async (id, str) => {
   const response = await request
-    .get('https://api.leancloud.cn/1.1/classes/ad')
+    .get('https://api.leancloud.cn/1.1/classes/moe')
     .set({
       'X-LC-Id': 'R6A46DH2meySCVNM1uWOoW2M-gzGzoHsz',
       'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB',
@@ -98,7 +98,7 @@ export const setGg = async (id, str) => {
   if (item) {
     // update request
     await request
-      .put(`https://api.leancloud.cn/1.1/classes/ad/${item.objectId}`)
+      .put(`https://api.leancloud.cn/1.1/classes/moe/${item.objectId}`)
       .set({
         'X-LC-Id': 'R6A46DH2meySCVNM1uWOoW2M-gzGzoHsz',
         'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB',
@@ -113,7 +113,7 @@ export const setGg = async (id, str) => {
   } else {
     // create request
     await request
-      .post('https://api.leancloud.cn/1.1/classes/ad')
+      .post('https://api.leancloud.cn/1.1/classes/moe')
       .set({
         'X-LC-Id': 'R6A46DH2meySCVNM1uWOoW2M-gzGzoHsz',
         'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB',
@@ -156,7 +156,7 @@ export const setNextPrice = async (id, priceInWei) => {
   // Convert price(Wei) to a number instance (ether)
   const price = Number(web3.fromWei(priceInWei, 'ether').toString());
   const response = await request
-    .get('https://api.leancloud.cn/1.1/classes/ad')
+    .get('https://api.leancloud.cn/1.1/classes/moe')
     .set({
       'X-LC-Id': 'R6A46DH2meySCVNM1uWOoW2M-gzGzoHsz',
       'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB',
@@ -175,7 +175,7 @@ export const setNextPrice = async (id, priceInWei) => {
 
     // update request
     await request
-      .put(`https://api.leancloud.cn/1.1/classes/ad/${item.objectId}`)
+      .put(`https://api.leancloud.cn/1.1/classes/moe/${item.objectId}`)
       .set({
         'X-LC-Id': 'R6A46DH2meySCVNM1uWOoW2M-gzGzoHsz',
         'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB',
@@ -190,7 +190,7 @@ export const setNextPrice = async (id, priceInWei) => {
   } else {
     // create request
     await request
-      .post('https://api.leancloud.cn/1.1/classes/ad')
+      .post('https://api.leancloud.cn/1.1/classes/moe')
       .set({
         'X-LC-Id': 'R6A46DH2meySCVNM1uWOoW2M-gzGzoHsz',
         'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB',
@@ -212,24 +212,7 @@ export const getItem = async (id) => {
   const exist = await Promise.promisify(cryptoWaterMarginContract.tokenExists)(id);
   if (!exist) return null;
   const card = config.cards[id] || {};
-  const item = {
-    id,
-    name: card.name,
-    nickname: card.nickname,
-    hair_color: card.hair_color,
-    eye_color: card.eye_color,
-    height: card.height,
-    weight: card.weight,
-    moe_point: card.moe_point,
-    birth_place: card.birth_place,
-    cp: card.cp,
-    introduce: card.introduce,
-    historical_prototype: card.historical_prototype,
-    idol_point: card.idol_point,
-    role_base: card.role_base,
-    Neta: card.Neta,
-    video: card.video
-  };
+  const item = card;
   [item.owner, item.price, item.nextPrice] =
     await Promise.promisify(cryptoWaterMarginContract.allOf)(id);
 

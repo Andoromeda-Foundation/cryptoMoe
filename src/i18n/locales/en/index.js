@@ -3,7 +3,7 @@ const PRIVACY_CONTENT = require('raw-loader!./privacy.html');
 const TERMS_CONTENT = require('raw-loader!./terms.html');
 
 module.exports = {
-  CryptoHero: 'CryptoHero',
+  CryptoMoe: 'CryptoMoe',
   'My Cards': 'My Cards',
   'Sign In': 'Sign In',
   Home: 'Home',
@@ -11,7 +11,7 @@ module.exports = {
   Owner: 'Owner',
   'Current Price': 'Current Price',
   Buy: 'Buy',
-  BirthdayGift: 'Birthday Tribute(HOT)',  
+  BirthdayGift: 'Birthday Tribute(HOT)',
   'Terms of Service': 'Terms',
   'Privacy Policy': 'Privacy',
   'Contact Us': 'Contact',
@@ -30,4 +30,5 @@ module.exports = {
   FAQs_CONTENT,
   PRIVACY_CONTENT,
   TERMS_CONTENT,
+  BuyNow: 'Buy Now',
 };

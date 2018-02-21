@@ -3,7 +3,7 @@ const PRIVACY_CONTENT = require('raw-loader!./privacy.html');
 const TERMS_CONTENT = require('raw-loader!./terms.html');
 
 module.exports = {
-  CryptoHero: '暗号化英雄',
+  CryptoMoe: 'CryptoMoe',
   'My Cards': 'コレクションカード',
   'Sign In': 'サインイン',
   Home: 'ホーム',
@@ -29,4 +29,5 @@ module.exports = {
   FAQs_CONTENT,
   PRIVACY_CONTENT,
   TERMS_CONTENT,
+  BuyNow: 'Buy Now',
 };

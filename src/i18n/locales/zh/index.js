@@ -3,7 +3,7 @@ const PRIVACY_CONTENT = require('raw-loader!./privacy.html');
 const TERMS_CONTENT = require('raw-loader!./terms.html');
 
 module.exports = {
-  CryptoHero: '以太水浒',
+  CryptoMoe: '以太萌王',
   'My Cards': '我的卡牌',
   'Sign In': '登录游戏',
   Home: '首页',
@@ -31,4 +31,5 @@ module.exports = {
   FAQs_CONTENT,
   PRIVACY_CONTENT,
   TERMS_CONTENT,
+  BuyNow: '现在购买',
 };

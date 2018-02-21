@@ -3,28 +3,30 @@
     <div v-if="item">
       <div class="columns is-multiline is-mobile">
         <div class="column
-           is-full-mobile">
-          <img :src="'http://test.cdn.hackx.org/heros/'+item.id+'.jpg'">
-        </div>
-        <div class="column
-           is-full-mobile">
-          <img :src="'http://test.cdn.hackx.org/back/back_'+item.id+'.jpg'">
+           is-full-mobile moe-item-display">
+          <img :src="'http://test.cdn.hackx.org/moe/'+item.id+'.jpg'" class="moe-item-img">
         </div>
         <div class="column
            is-full-mobile">
           <div class="content">
             <h2>{{item.nickname}} · {{item.name}}</h2>
+            <h4>{{toDisplayedPrice(item.price)}}</h4>
+            <h4>{{item.moe_point}}</h4>
             <ul>
               <li>{{$t('Owner')}}：
                 <router-link :to="{ name: 'User', params:{address: item.owner}}">
-                  {{item.owner.slice(-6).toUpperCase()}}
+                  {{item.owner.toUpperCase()}}
                 </router-link>
               </li>
-              <li>{{$t('Current Price')}}：{{toDisplayedPrice(item.price)}}</li>
+              <li>出生地：{{item.birth_place}}</li>
+              <li>CP：{{item.cp}}</li>
+              <li>眼睛颜色：{{item.eye_color}}</li>
+              <li>头发颜色：{{item.hair_color}}</li>
+              <li>身高：{{item.height}}</li>
+              <li>体重：{{item.weight}}</li>
             </ul>
             <p class="item-slogan">{{$t('Slogan')}}: {{ad}}</p>
-            <article v-if="item.owner !== me.address"
-                     class="message is-warning">
+            <article v-if="item.owner !== me.address" class="message is-warning">
               <div class="message-body">
                 {{$t('EDIT_SLOGAN_TIP')}}
               </div>
@@ -33,18 +35,12 @@
 
           <template v-if="item.owner !== me.address">
             <div class="buttons">
-              <button class="button is-danger is-outlined"
-                      @click="onBuy(1)">{{ $t('BUY_BTN') }}</button>
-              <button class="button is-danger is-outlined"
-                      @click="onBuy(1.1)">{{ $t('PREMIUM_BUY_BTN', { rate: '10%' }) }}</button>
-              <button class="button is-danger is-outlined"
-                      @click="onBuy(1.2)">{{ $t('PREMIUM_BUY_BTN', { rate: '20%' }) }}</button>
-              <button class="button is-danger is-outlined"
-                      @click="onBuy(1.3)">{{ $t('PREMIUM_BUY_BTN', { rate: '30%' }) }}</button>
-              <button class="button is-danger is-outlined"
-                      @click="onBuy(1.4)">{{ $t('PREMIUM_BUY_BTN', { rate: '40%' }) }}</button>
-              <button class="button is-danger is-outlined"
-                      @click="onBuy(1.5)">{{ $t('PREMIUM_BUY_BTN', { rate: '50%' }) }}</button>
+              <button class="button is-danger is-outlined" @click="onBuy(1)">{{ $t('BUY_BTN') }}</button>
+              <button class="button is-danger is-outlined" @click="onBuy(1.1)">{{ $t('PREMIUM_BUY_BTN', { rate: '10%' }) }}</button>
+              <button class="button is-danger is-outlined" @click="onBuy(1.2)">{{ $t('PREMIUM_BUY_BTN', { rate: '20%' }) }}</button>
+              <button class="button is-danger is-outlined" @click="onBuy(1.3)">{{ $t('PREMIUM_BUY_BTN', { rate: '30%' }) }}</button>
+              <button class="button is-danger is-outlined" @click="onBuy(1.4)">{{ $t('PREMIUM_BUY_BTN', { rate: '40%' }) }}</button>
+              <button class="button is-danger is-outlined" @click="onBuy(1.5)">{{ $t('PREMIUM_BUY_BTN', { rate: '50%' }) }}</button>
             </div>
             <article class="message is-danger">
               <div class="message-body">
@@ -53,9 +49,21 @@
             </article>
           </template>
 
-          <button v-if="item.owner === me.address"
-                  class="button is-warning"
-                  @click="onUpdateAd">{{$t('Edit Slogan')}}</button>
+          <button v-if="item.owner === me.address" class="button is-warning" @click="onUpdateAd">{{$t('Edit Slogan')}}</button>
+        </div>
+      </div>
+      <div class="columns is-multiline is-mobile">
+        <div class="column
+           is-full-mobile">
+          <div class="message-body">
+            <p>
+              <div v-html="item.introduce"></div>
+            </p>
+          </div>
+        </div>
+        <div class="column
+           is-full-mobile">
+           <div v-html="item.youkuEmbed"></div>
         </div>
       </div>
     </div>
@@ -86,7 +94,7 @@ export default {
     },
     ad() {
       return this.$store.state.ads[this.itemId];
-    },
+    }
   },
   async created() {
     this.$store.dispatch('FETCH_ITEM', this.itemId);
@@ -106,7 +114,7 @@ export default {
           alert(this.$t('BUY_SUCCESS_MSG'));
           setNextPrice(this.itemId, buyPrice);
         })
-        .catch((e) => {
+        .catch(e => {
           alert(this.$t('BUY_FAIL_MSG'));
           console.log(e);
         });
@@ -125,14 +133,14 @@ export default {
           .then(() => {
             this.$store.dispatch('FETCH_AD', this.itemId);
           })
-          .catch((e) => {
+          .catch(e => {
             alert(this.$t('UPDATE_SLOGAN_FAIL_MSG'));
             console.log(e);
           });
       }
       return 0;
-    },
-  },
+    }
+  }
 };
 </script>
  <style scoped>
@@ -140,5 +148,11 @@ export default {
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-all;
+}
+.moe-item-display {
+  text-align: center;
+}
+.moe-item-img {
+  height: 800px;
 }
 </style>

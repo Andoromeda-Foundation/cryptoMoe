@@ -1,9 +1,9 @@
 <template>
-  <header class="moe-header">
+  <header :class="[$route.name !== 'Home' ? 'moe-header-bg' : '', 'moe-header']">
     <nav class="navbar moe-navbar">
       <div class="navbar-brand moe-navbar-brand">
         <router-link class="moe-navbar-item navbar-item" :to="{ name: 'Home'}">
-          {{$t('CryptoHero')}}
+          {{$t('CryptoMoe')}}
         </router-link>
 
         <router-link v-if="!me" class="moe-navbar-item navbar-item" :to="{ name: 'Login'}">
@@ -117,8 +117,11 @@ export default {
 
 <style>
 .moe-header {
-  padding-top: 41px;
+  padding-top: 20px;
   width: 100%;
+}
+.moe-header-bg {
+  background-color: #363636;
 }
 .moe-navbar {
   background-color: transparent;

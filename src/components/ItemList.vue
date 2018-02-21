@@ -1,10 +1,5 @@
 <template>
   <div>
-    <!-- <div class="moe-bg"></div>
-    <div class="moe-banner">
-      <div class="moe-title">以太萌王</div>
-      <div class="moe-slogan">君王乱斗，王权之争，谁是你心目中的最强帝王！</div>
-    </div> -->
     <div class="columns is-multiline is-mobile main-container">
       <router-link v-for="item in items" v-if="item" :to="{ name: 'Item', params:{id: item.id}}" :key=item.id.toString() class="column
            is-full-mobile
@@ -31,7 +26,7 @@
                 {{item.owner.toUpperCase()}}
               </router-link>
             </div>
-            <div class="card-buy-btn">现在购买</div>
+            <div class="card-buy-btn">{{$t('BuyNow')}}</div>
           </div>
         </template>
       </router-link>
@@ -87,6 +82,12 @@ export default {
 };
 </script>
  <style scoped>
+.main-container {
+  margin-top: 50rem; /* 首页卡片margin */
+  margin-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
 .item-slogan {
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -128,12 +129,6 @@ export default {
   height: 35px;
   line-height: 35px;
   color: white;
-}
-.main-container {
-  margin-top: 58rem;
-  margin-bottom: 2rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
 }
 .moe-banner {
   position: absolute;

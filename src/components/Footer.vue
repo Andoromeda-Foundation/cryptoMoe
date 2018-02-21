@@ -46,7 +46,7 @@
           <small>
             All rights reserved. <br>
             &copy; Copyright 2018
-            <strong>CryptoHero.pro</strong>
+            <strong>CryptoMoe.io</strong>
           </small>
         </p>
       </div>
