@@ -233,14 +233,16 @@ export const buyItem = (id, price) => new Promise((resolve, reject) => {
     gas: 220000,
     gasPrice: 1000000000 * 100,
   },
-    (err, result) => (err ? reject(err) : resolve(result)));
+  (err, result) => (err ? reject(err) : resolve(result)));
 });
 
 export const getTotal = () => Promise.promisify(cryptoWaterMarginContract.totalSupply)();
 
 export const getItemIds = async (offset, limit) => {
-  const ids = await Promise.promisify(cryptoWaterMarginContract.itemsForSaleLimit)(offset, limit);
-  return ids.sort((a, b) => a - b);
+  let ids = await Promise.promisify(cryptoWaterMarginContract.itemsForSaleLimit)(offset, limit);
+  ids = ids.map(id => id.toNumber());
+  ids.sort((a, b) => a - b);
+  return Array.from(new Set(ids));
 };
 
 export const isItemMaster = async (id) => {
