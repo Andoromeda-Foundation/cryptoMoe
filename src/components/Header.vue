@@ -24,10 +24,10 @@
           {{$t('FAQs')}}
         </router-link>
 
-        <router-link class="navbar-item"
+        <!-- <router-link class="navbar-item"
                      :to="{ name: 'BirthdayGift'}">
           {{$t('BirthdayGift')}}
-        </router-link>        
+        </router-link>         -->
       </div>
 
       <div class="navbar-end">
