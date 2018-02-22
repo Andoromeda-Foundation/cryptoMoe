@@ -20,9 +20,13 @@ module.exports = {
   EDIT_SLOGAN_TIP: 'このカードを購入したあと、スローガン編集が可能になる。',
   BUY_SUCCESS_MSG: '購入成功、鉱工の確認を待つ間、後ほどリフレッシュしてください。',
   BUY_FAIL_MSG: '失敗しました、リフレッシュしてもう一度試しましょう。',
-  UPDATE_PRICE_PROMPT: '请输入您希望的卡的价格(单位为wei)：',
-  UPDATE_PRICE_ERROR_MSG: '输入有误',
+
+  UPDATE_PRICE_PROMPT: '请输入您希望的卡的价格(单位为ETH)：',
+  UPDATE_PRICE_CONFRIM: '请确认是否要修改卡的价格为：{priceInEth} ETH ？',
+  UPDATE_PRICE_ERROR_MSG: '输入有误(价格必须大于0)',
+  UPDATE_PRICE_SUCCESS_MSG: '提交成功，请等待矿工确认，稍后再来刷新看看吧。',
   UPDATE_PRICE_FAIL_MSG: '失败了，刷新网页再试试.',
+
   'Edit Slogan': 'スローガン編集',
   User: 'ユーザー',
   'His Cards': '彼・彼女のカード',
@@ -33,4 +37,7 @@ module.exports = {
   PRIVACY_CONTENT,
   TERMS_CONTENT,
   BuyNow: 'Buy Now',
+  CHANGE_PRICE_BTN: '修改价格',
+  INPUT_PRICE_BTN: '手动输入价格',
+  BUT_AT_INPUT_PRICE_BTN: '按输入价格购买',
 };

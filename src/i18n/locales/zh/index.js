@@ -23,9 +23,13 @@ module.exports = {
   UPDATE_SLOGAN_PROMPT: '请输入您的标语内容(最长100个字符)：',
   UPDATE_SLOGAN_FAIL_TOO_LOOG_MSG: '标语最长只能100个字符',
   UPDATE_SLOGAN_FAIL_MSG: '失败了，刷新网页再试试.',
-  UPDATE_PRICE_PROMPT: '请输入您希望的卡的价格(单位为wei)：',
-  UPDATE_PRICE_ERROR_MSG: '输入有误',
+
+  UPDATE_PRICE_PROMPT: '请输入您希望的卡的价格(单位为ETH)：',
+  UPDATE_PRICE_CONFRIM: '请确认是否要修改卡的价格为：{priceInEth} ETH ？',
+  UPDATE_PRICE_ERROR_MSG: '输入有误(价格必须大于0)',
+  UPDATE_PRICE_SUCCESS_MSG: '提交成功，请等待矿工确认，稍后再来刷新看看吧。',
   UPDATE_PRICE_FAIL_MSG: '失败了，刷新网页再试试.',
+
   User: '用户',
   'His Cards': 'TA的卡牌',
   BUY_BTN: '正价买入',
@@ -35,4 +39,7 @@ module.exports = {
   PRIVACY_CONTENT,
   TERMS_CONTENT,
   BuyNow: '现在购买',
+  CHANGE_PRICE_BTN: '修改价格',
+  INPUT_PRICE_BTN: '手动输入价格',
+  BUT_AT_INPUT_PRICE_BTN: '按输入价格购买',
 };

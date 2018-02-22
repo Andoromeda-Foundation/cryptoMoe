@@ -1,4 +1,4 @@
- const FAQs_CONTENT = require('raw-loader!./faq.html');
+const FAQs_CONTENT = require('raw-loader!./faq.html');
 const PRIVACY_CONTENT = require('raw-loader!./privacy.html');
 const TERMS_CONTENT = require('raw-loader!./terms.html');
 
@@ -21,9 +21,13 @@ module.exports = {
   EDIT_SLOGAN_TIP: 'After purchasing this card, you can edit the slogan.',
   BUY_SUCCESS_MSG: 'The payment is successful, please wait for the miner to confirm, refresh again later.',
   BUY_FAIL_MSG: 'Failed, refresh the page and try again.',
-  UPDATE_PRICE_PROMPT: '请输入您希望的卡的价格(单位为wei)：',
-  UPDATE_PRICE_ERROR_MSG: '输入有误',
-  UPDATE_PRICE_FAIL_MSG: '失败了，刷新网页再试试.',
+
+  UPDATE_PRICE_PROMPT: 'Please enter the price (the unit is ETH):',
+  UPDATE_PRICE_CONFRIM: 'Please confirm whether to change the price to {priceInEth} ETH ?',
+  UPDATE_PRICE_ERROR_MSG: 'Price must be greater than zero.',
+  UPDATE_PRICE_SUCCESS_MSG: 'The submit is successful, please wait for the miner to confirm, refresh again later.',
+  UPDATE_PRICE_FAIL_MSG: 'Failed, refresh the page and try again.',
+
   'Edit Slogan': 'Edit Slogan',
   User: 'User',
   'His Cards': 'His/Her Cards',
@@ -34,4 +38,7 @@ module.exports = {
   PRIVACY_CONTENT,
   TERMS_CONTENT,
   BuyNow: 'Buy Now',
+  CHANGE_PRICE_BTN: 'Change Price',
+  INPUT_PRICE_BTN: 'Manual Input Price',
+  BUT_AT_INPUT_PRICE_BTN: 'Buy at the input price',
 };
