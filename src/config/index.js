@@ -4,7 +4,6 @@ import cardsData from './cards.json';
 
 export const network = {
   1: {
-    default: true, // It will be used when no metaMask
     name: 'Main Ethereum Network',
     contract: '',
     rpc: 'https://mainnet.infura.io/lTETGFVyQX99UKQ98BN4',
@@ -14,6 +13,7 @@ export const network = {
     contract: '',
   },
   3: {
+    default: true, // It will be used when no metaMask
     name: 'Ropsten Test Network',
     contract: '0xDCc3BcA50861263bf5B7227b49d35Cf7B8594D2a',
     rpc: 'https://ropsten.infura.io/lTETGFVyQX99UKQ98BN4',
