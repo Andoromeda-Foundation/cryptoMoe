@@ -10,7 +10,8 @@
            is-one-quarter-tablet
            is-one-quarter-desktop
            is-one-quarter-widescreen
-           is-one-quarter-fullhd">
+           is-one-quarter-fullhd
+           hvr-grow">
         <template v-if="1 <= item.id && item.id <= 114">
           <div class="card">
             <div class="card-image">
