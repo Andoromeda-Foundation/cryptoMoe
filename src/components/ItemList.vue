@@ -14,7 +14,7 @@
         <template v-if="1 <= item.id && item.id <= 114">
           <div class="card">
             <div class="card-image">
-              <figure class="image is-5by4">
+              <figure class="image is-16by9 is-141">
                 <img v-lazy="'http://test.cdn.hackx.org/moe/'+item.id+'.jpg'">
               </figure>
             </div>
@@ -31,7 +31,12 @@
                 {{$t('Owner')}}: {{item.owner.toUpperCase().slice(-6)}}
               </router-link>
             </div>
-            <div class="card-buy-btn">{{$t('BuyNow')}}</div>
+            <div v-if="item.owner !== me.address"
+                 class="card-action button is-danger">{{$t('BuyNow')}}</div>
+            <div v-else
+                 class="card-action button is-warning">
+              {{$t('Edit Slogan')}}
+            </div>
           </div>
         </template>
       </router-link>
@@ -57,6 +62,10 @@ export default {
         const item = this.$store.state.items[id];
         return item || { id };
       });
+    },
+
+    me() {
+      return this.$store.state.me || {};
     },
   },
 
@@ -115,45 +124,30 @@ export default {
   border-width: 1px;
   border-color: gray;
   text-align: center;
-  height: 30px;
-  line-height: 30px;
+  height: 2.2rem;
+  font-size: 1.1em;
+  line-height: 2.2rem;
   font-weight: bolder;
-}
-.card-content {
 }
 .card-address {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  height: 30px;
-  line-height: 30px;
+  height: 2.2rem;
+  font-size: 0.9em;
+  line-height: 2.2rem;
   text-align: center;
-  padding-left: 25px;
-  padding-right: 25px;
   border-style: solid none solid none;
   border-width: 1px;
   border-color: gray;
+  border-bottom: none;
 }
-.card-buy-btn {
-  background-color: #ed445a;
-  text-align: center;
-  height: 35px;
-  line-height: 35px;
-  color: white;
-}
-.moe-banner {
-  position: absolute;
-  display: block;
-  text-align: center;
+.card-action {
   width: 100%;
-  top: 650px;
-  color: white;
+  border-radius: 0;
 }
-.moe-title {
-  font-size: 150px;
-}
-.moe-slogan {
-  font-size: 30px;
+.is-141 {
+  padding-top: 141%;
 }
 </style>
 
