@@ -1,7 +1,7 @@
 <template>
   <header :class="[$route.name === 'Home' ? 'moe-home-header' : '']">
     <section class="hero is-fullheight moe-hero">
-      <img class="moe-title-img"
+      <img class="moe-title-img animated zoomIn"
            src="/static/assets/moe-title.png"
            alt="以太萌王">
     </section>
