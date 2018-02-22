@@ -15,5 +15,6 @@ export const toReadablePrice = (fromPrice, fromUnit = 'wei') => {
     price = web3.fromWei(priceInWei, 'ether');
     unit = 'ETH';
   }
-  return { price, unit };
+
+  return { price: BigNumber(price).toFixed(4), unit };
 };

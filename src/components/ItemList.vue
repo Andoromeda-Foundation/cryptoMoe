@@ -58,7 +58,7 @@ export default {
   methods: {
     toDisplayedPrice(priceInWei) {
       const readable = toReadablePrice(priceInWei);
-      return `${readable.price.toFixed(4)} ${readable.unit}`;
+      return `${readable.price} ${readable.unit}`;
     },
     toDisplayedAd(id) {
       const ad = this.$store.state.ads[id];
