@@ -1,22 +1,9 @@
 <template>
-  <div>
-    <div v-if="$route.name === 'Home'">
-      <div class="moe-bg"></div>
-      <div class="moe-banner">
-        <img src="/static/assets/moe-title.png" alt="以太萌王" class="moe-title-img">
-        <!-- <div class="moe-title">以太萌王</div>
-        <div class="moe-slogan">君王乱斗，王权之争，谁是你心目中的最强帝王！</div> -->
-      </div>
-    </div>
-    <div id="app">
-      <Header />
-
-      <div class="container main-container">
-        <router-view :key="key"></router-view>
-      </div>
-
-      <Footer />
-    </div>
+  <div id="app">
+    <Header />
+    <router-view class="container view"
+                 :key="key"></router-view>
+    <Footer />
   </div>
 </template>
 
@@ -28,46 +15,28 @@ export default {
   name: 'App',
   components: {
     Header,
-    Footer
-  },
-  data: {
-    homeAppClass: {
-      // marginTop: '55rem',
-    },
+    Footer,
   },
   computed: {
     key() {
       return this.$route.name !== undefined
         ? this.$route.name + +new Date()
         : this.$route + +new Date();
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style>
-.moe-title-img {
-  width: 900px;
-}
-.moe-banner {
-  position: absolute;
-  display: block;
-  text-align: center;
-  width: 100%;
-  top: 500px;
-  color: white;
-}
-.moe-title {
-  font-size: 150px;
-}
-.moe-slogan {
-  font-size: 30px;
-}
-.main-container {
-  margin-top: 4rem;
-  margin-bottom: 4rem;
+html,
+body {
+  height: 100%;
 }
 #app {
-  min-width: 1024px;
+  /* min-width: 1024px; */
+  background: #eff3f4;
+}
+.view {
+  margin-top: 2rem;
 }
 </style>

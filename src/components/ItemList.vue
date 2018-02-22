@@ -1,7 +1,11 @@
 <template>
   <div>
     <div class="columns is-multiline is-mobile main-container">
-      <router-link v-for="item in items" v-if="item" :to="{ name: 'Item', params:{id: item.id}}" :key=item.id.toString() class="column
+      <router-link v-for="item in items"
+                   v-if="item"
+                   :to="{ name: 'Item', params:{id: item.id}}"
+                   :key=item.id.toString()
+                   class="column
            is-full-mobile
            is-one-quarter-tablet
            is-one-quarter-desktop
@@ -11,7 +15,7 @@
           <div class="card">
             <div class="card-image">
               <figure class="image is-5by4">
-                <img v-lazy="'http://test.cdn.hackx.org/moe/'+item.id+'.jpg'" style="height: 438.3px;">
+                <img v-lazy="'http://test.cdn.hackx.org/moe/'+item.id+'.jpg'">
               </figure>
             </div>
             <div class="card-price">{{toDisplayedPrice(item.price)}}</div>
@@ -22,8 +26,9 @@
               </div>
             </div>
             <div class="card-address">
-              <router-link v-if="item.owner" :to="{ name: 'User', params:{address: item.owner}}">
-                {{item.owner.toUpperCase()}}
+              <router-link v-if="item.owner"
+                           :to="{ name: 'User', params:{address: item.owner}}">
+                {{$t('Owner')}}: {{item.owner.toUpperCase().slice(-6)}}
               </router-link>
             </div>
             <div class="card-buy-btn">{{$t('BuyNow')}}</div>
@@ -48,11 +53,11 @@ export default {
   computed: {
     items() {
       const maxCardId = Object.keys(cardConfig).length;
-      return this.itemIds.filter(id => id <= maxCardId).map(id => {
+      return this.itemIds.filter(id => id <= maxCardId).map((id) => {
         const item = this.$store.state.items[id];
         return item || { id };
       });
-    }
+    },
   },
 
   methods: {
@@ -66,28 +71,22 @@ export default {
         return `${ad.slice(0, 44)} ...`;
       }
       return ad;
-    }
+    },
   },
 
   created() {},
 
   watch: {
     itemIds(newItemIds) {
-      newItemIds.forEach(itemId => {
+      newItemIds.forEach((itemId) => {
         this.$store.dispatch('FETCH_ITEM', itemId);
         this.$store.dispatch('FETCH_AD', itemId);
       });
-    }
-  }
+    },
+  },
 };
 </script>
  <style scoped>
-.main-container {
-  margin-top: 50rem; /* 首页卡片margin */
-  margin-bottom: 2rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
 .item-slogan {
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -96,10 +95,17 @@ export default {
   height: 20px;
 }
 .card {
-  height: 625px;
-  border-style: none solid solid none;
+  overflow: hidden;
+  border-radius: 5px;
+  /* height: 625px; */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  /* border-style: none solid solid none;
   border-width: 1px;
-  border-color: gray;
+  border-color: gray; */
+}
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .card-price {
   border-style: solid none solid none;

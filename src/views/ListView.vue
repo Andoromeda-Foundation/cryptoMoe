@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="list-view">
     <div v-if="loading"
          class="loader-wrapper">
       <pulse-loader></pulse-loader>
@@ -48,6 +48,11 @@ export default {
 };
 </script>
 <style scoped>
+.list-view {
+  margin-top: 0;
+  position: relative;
+  top: -0.5rem;
+}
 .loader-wrapper {
   display: flex;
   align-items: center;

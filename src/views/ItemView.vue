@@ -15,7 +15,7 @@
             <p>
               <span class="tag is-primary">{{$t('Owner')}}</span>
               <router-link :to="{ name: 'User', params:{address: item.owner}}">
-                {{item.owner.toUpperCase()}}
+                {{item.owner.toUpperCase().slice(-6)}}
               </router-link>
             </p>
             <p>
@@ -94,12 +94,10 @@ import { toReadablePrice } from '@/util';
 export default {
   name: 'item-view',
 
-  data: () => {
-    return {
+  data: () => ({
       isShowInput: false,
       customizedPrice: 0,
-    };
-  },
+    }),
 
   computed: {
     itemId() {
@@ -113,7 +111,7 @@ export default {
     },
     ad() {
       return this.$store.state.ads[this.itemId];
-    }
+    },
   },
   async created() {
     this.$store.dispatch('FETCH_ITEM', this.itemId);
@@ -137,7 +135,7 @@ export default {
           alert(this.$t('BUY_SUCCESS_MSG'));
           setNextPrice(this.itemId, buyPrice);
         })
-        .catch(e => {
+        .catch((e) => {
           alert(this.$t('BUY_FAIL_MSG'));
           console.log(e);
         });
@@ -152,7 +150,7 @@ export default {
           alert(this.$t('BUY_SUCCESS_MSG'));
           setNextPrice(this.itemId, buyPrice);
         })
-        .catch(e => {
+        .catch((e) => {
           alert(this.$t('BUY_FAIL_MSG'));
           console.log(e);
         });
@@ -171,7 +169,7 @@ export default {
           .then(() => {
             this.$store.dispatch('FETCH_AD', this.itemId);
           })
-          .catch(e => {
+          .catch((e) => {
             alert(this.$t('UPDATE_SLOGAN_FAIL_MSG'));
             console.log(e);
           });
@@ -188,14 +186,14 @@ export default {
           .then(() => {
             this.$store.dispatch('FETCH_ITEM', this.itemId);
           })
-          .catch(e => {
+          .catch((e) => {
             alert(this.$t('UPDATE_PRICE_FAIL_MSG'));
             console.log(e);
           });
       }
       return 0;
-    }
-  }
+    },
+  },
 };
 </script>
  <style scoped>
