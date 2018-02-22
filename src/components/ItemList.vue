@@ -92,7 +92,10 @@ export default {
   word-wrap: break-word;
   word-break: break-all;
   display: block;
-  height: 20px;
+  line-height: 1.5em;
+  height: 4.5em;
+  /* height is 3 lines */
+  overflow: hidden;
 }
 .card {
   overflow: hidden;
