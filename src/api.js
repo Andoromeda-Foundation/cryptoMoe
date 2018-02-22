@@ -20,11 +20,11 @@ export const init = async () => {
     .get('https://api.leancloud.cn/1.1/classes/moe')
     .set({
       'X-LC-Id': 'R6A46DH2meySCVNM1uWOoW2M-gzGzoHsz',
-      'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB'
+      'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB',
     })
     .type('json')
     .accept('json')
-    .then(response => {
+    .then((response) => {
       if (response.body && response.body.results) {
         store = response.body.results;
       }
@@ -54,7 +54,7 @@ export const getAnnouncements = async () => {
     .get('https://api.leancloud.cn/1.1/classes/announcement')
     .set({
       'X-LC-Id': 'R6A46DH2meySCVNM1uWOoW2M-gzGzoHsz',
-      'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB'
+      'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB',
     })
     .type('json')
     .accept('json');
@@ -85,7 +85,7 @@ export const setGg = async (id, str) => {
     .get('https://api.leancloud.cn/1.1/classes/moe')
     .set({
       'X-LC-Id': 'R6A46DH2meySCVNM1uWOoW2M-gzGzoHsz',
-      'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB'
+      'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB',
     })
     .type('json')
     .accept('json');
@@ -100,12 +100,12 @@ export const setGg = async (id, str) => {
       .put(`https://api.leancloud.cn/1.1/classes/moe/${item.objectId}`)
       .set({
         'X-LC-Id': 'R6A46DH2meySCVNM1uWOoW2M-gzGzoHsz',
-        'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB'
+        'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB',
       })
       .type('json')
       .accept('json')
       .send({
-        str
+        str,
       });
     // update store
     item.str = str;
@@ -115,13 +115,13 @@ export const setGg = async (id, str) => {
       .post('https://api.leancloud.cn/1.1/classes/moe')
       .set({
         'X-LC-Id': 'R6A46DH2meySCVNM1uWOoW2M-gzGzoHsz',
-        'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB'
+        'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB',
       })
       .type('json')
       .accept('json')
       .send({
         id: `${id}`,
-        str
+        str,
       });
     // update store
     await init();
@@ -158,7 +158,7 @@ export const setNextPrice = async (id, priceInWei) => {
     .get('https://api.leancloud.cn/1.1/classes/moe')
     .set({
       'X-LC-Id': 'R6A46DH2meySCVNM1uWOoW2M-gzGzoHsz',
-      'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB'
+      'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB',
     })
     .type('json')
     .accept('json');
@@ -177,12 +177,12 @@ export const setNextPrice = async (id, priceInWei) => {
       .put(`https://api.leancloud.cn/1.1/classes/moe/${item.objectId}`)
       .set({
         'X-LC-Id': 'R6A46DH2meySCVNM1uWOoW2M-gzGzoHsz',
-        'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB'
+        'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB',
       })
       .type('json')
       .accept('json')
       .send({
-        nextPrice: price * 1.1
+        nextPrice: price * 1.1,
       });
     // update store
     item.nextPrice = price * 1.1;
@@ -192,13 +192,13 @@ export const setNextPrice = async (id, priceInWei) => {
       .post('https://api.leancloud.cn/1.1/classes/moe')
       .set({
         'X-LC-Id': 'R6A46DH2meySCVNM1uWOoW2M-gzGzoHsz',
-        'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB'
+        'X-LC-Key': '8R6rGgpHa0Y9pq8uO53RAPCB',
       })
       .type('json')
       .accept('json')
       .send({
         id: `${id}`,
-        nextPrice: price * 1.1
+        nextPrice: price * 1.1,
       });
     // update store
     await init();
@@ -207,13 +207,13 @@ export const setNextPrice = async (id, priceInWei) => {
   return price * 1.1;
 };
 
-export const getItem = async id => {
+export const getItem = async (id) => {
   const exist = await Promise.promisify(cryptoMoeContract.tokenExists)(id);
   if (!exist) return null;
   const card = config.cards[id] || {};
   const item = card;
   [item.owner, item.price, item.nextPrice] = await Promise.promisify(
-    cryptoMoeContract.allOf
+    cryptoMoeContract.allOf,
   )(id);
 
   // [[item.owner, item.price, item.nextPrice], item.estPrice] = await Promise.all([
@@ -230,9 +230,9 @@ export const buyItem = (id, price) =>
       {
         value: price, // web3.toWei(Number(price), 'ether'),
         gas: 220000,
-        gasPrice: 1000000000 * 100
+        gasPrice: 1000000000 * 66, // be nice
       },
-      (err, result) => (err ? reject(err) : resolve(result))
+      (err, result) => (err ? reject(err) : resolve(result)),
     );
   });
 
@@ -244,9 +244,9 @@ export const setPrice = (id, price) =>
       {
         value: 0,
         gas: 220000,
-        gasPrice: 1000000000 * 100
+        gasPrice: 1000000000 * 66, // be nice
       },
-      (err, result) => (err ? reject(err) : resolve(result))
+      (err, result) => (err ? reject(err) : resolve(result)),
     );
   });
 
@@ -256,21 +256,21 @@ export const getTotal = () =>
 export const getItemIds = async (offset, limit) => {
   let ids = await Promise.promisify(cryptoMoeContract.itemsForSaleLimit)(
     offset,
-    limit
+    limit,
   );
   ids = ids.map(id => id.toNumber());
   ids.sort((a, b) => a - b);
   return Array.from(new Set(ids));
 };
 
-export const isItemMaster = async id => {
+export const isItemMaster = async (id) => {
   const me = await getMe();
   const item = await getItem(id);
 
   return me && me.address && item && item.owner && me.address === item.owner;
 };
 
-export const getItemsOf = async address => {
+export const getItemsOf = async (address) => {
   let ids = await Promise.promisify(cryptoMoeContract.tokensOf)(address);
   ids = ids.map(id => id.toNumber());
   ids.sort((a, b) => a - b);
@@ -290,6 +290,6 @@ export const getLocale = async () =>
     navigator.userLanguage
   ).toLowerCase();
 
-export const setLocale = async locale => {
+export const setLocale = async (locale) => {
   Cookie.set('locale', locale, { expires: 365 });
 };
