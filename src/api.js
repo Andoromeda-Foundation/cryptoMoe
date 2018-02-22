@@ -212,7 +212,7 @@ export const getItem = async (id) => {
   if (!exist) return null;
   const card = config.cards[id] || {};
   const item = card;
-  [item.owner, item.price, item.nextPrice] = await Promise.promisify(
+  [item.owner, item.price, item.nextPrice, item.freeTime] = await Promise.promisify(
     cryptoMoeContract.allOf,
   )(id);
 

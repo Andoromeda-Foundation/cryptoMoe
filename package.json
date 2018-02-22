@@ -12,6 +12,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@xkeshi/vue-countdown": "^0.5.0",
     "bignumber.js": "^6.0.0",
     "bluebird": "^3.5.1",
     "js-cookie": "^2.2.0",

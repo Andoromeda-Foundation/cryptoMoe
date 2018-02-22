@@ -28,6 +28,9 @@ module.exports = {
   UPDATE_PRICE_SUCCESS_MSG: 'The submit is successful, please wait for the miner to confirm, refresh again later.',
   UPDATE_PRICE_FAIL_MSG: 'Failed, refresh the page and try again.',
 
+  CHANGE_PRICE_COUNTDOWN_TIP: 'After {time}（{days} days {hours} hours {minutes} minutes {seconds} seconds）the owner can change price.',
+
+
   'Edit Slogan': 'Edit Slogan',
   User: 'User',
   'His Cards': 'His/Her Cards',

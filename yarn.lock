@@ -54,6 +54,10 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
+"@xkeshi/vue-countdown@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@xkeshi/vue-countdown/-/vue-countdown-0.5.0.tgz#42f9f94e020665c0f6b4d3a1ab70ceaf9b957888"
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"

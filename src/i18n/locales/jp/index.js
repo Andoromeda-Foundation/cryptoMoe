@@ -27,6 +27,8 @@ module.exports = {
   UPDATE_PRICE_SUCCESS_MSG: '提交成功，请等待矿工确认，稍后再来刷新看看吧。',
   UPDATE_PRICE_FAIL_MSG: '失败了，刷新网页再试试.',
 
+  CHANGE_PRICE_COUNTDOWN_TIP: '{time}（{days} 天 {hours} 小时 {minutes} 分钟 {seconds}秒）后，卡的拥有者可以修改此卡价格。',
+
   'Edit Slogan': 'スローガン編集',
   User: 'ユーザー',
   'His Cards': '彼・彼女のカード',

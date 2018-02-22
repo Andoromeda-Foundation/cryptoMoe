@@ -11,7 +11,19 @@
            is-full-mobile">
           <div class="content">
             <h2>{{item.nickname}} · {{item.name}}</h2>
+
             <h4>{{toDisplayedPrice(item.price)}}</h4>
+
+            <article class="message is-warning">
+              <div class="message-body">
+                <countdown :time="countdownFreeTime">
+                  <template slot-scope="props">{{ $t('CHANGE_PRICE_COUNTDOWN_TIP', { time:toDisplayedTime(), days:
+                    props.days, hours: props.hours, minutes: props.minutes, seconds:
+                    props.seconds })}}</template>
+                </countdown>
+              </div>
+            </article>
+
             <h4>{{item.moe_point}}</h4>
             <p>
               <span class="tag is-primary">{{$t('Owner')}}</span>
@@ -122,10 +134,14 @@
 <script>
 import { buyItem, setGg, setNextPrice, setPrice } from '@/api';
 import { toReadablePrice } from '@/util';
+import countdown from '@xkeshi/vue-countdown';
 import web3 from '@/web3';
 
 export default {
   name: 'item-view',
+  components: {
+    countdown,
+  },
 
   data: () => ({
     isShowInput: false,
@@ -142,6 +158,13 @@ export default {
     item() {
       return this.$store.state.items[this.itemId];
     },
+    countdownFreeTime() {
+      let time = 0;
+      if (this.item) {
+        time = this.item.freeTime.toNumber() * 1000 - new Date().getTime();
+      }
+      return time < 0 ? 0 : time;
+    },
     ad() {
       return this.$store.state.ads[this.itemId];
     },
@@ -154,6 +177,9 @@ export default {
   watch: {},
 
   methods: {
+    toDisplayedTime() {
+      return new Date(this.item.freeTime.toNumber() * 1000).toLocaleString();
+    },
     showInput() {
       this.isShowInput = true;
       this.customizedPrice = web3.fromWei(this.item.price, 'ether');
