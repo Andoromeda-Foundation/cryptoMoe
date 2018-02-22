@@ -1,16 +1,31 @@
 [
   {
     "constant": true,
-    "inputs": [{ "name": "_itemId", "type": "uint256" }],
+    "inputs": [
+      {
+        "name": "_itemId",
+        "type": "uint256"
+      }
+    ],
     "name": "tokenExists",
-    "outputs": [{ "name": "_exists", "type": "bool" }],
+    "outputs": [
+      {
+        "name": "_exists",
+        "type": "bool"
+      }
+    ],
     "payable": false,
     "stateMutability": "view",
     "type": "function"
   },
   {
     "constant": false,
-    "inputs": [{ "name": "_amount", "type": "uint256" }],
+    "inputs": [
+      {
+        "name": "_amount",
+        "type": "uint256"
+      }
+    ],
     "name": "withdrawAmount",
     "outputs": [],
     "payable": false,
@@ -21,7 +36,12 @@
     "constant": true,
     "inputs": [],
     "name": "name",
-    "outputs": [{ "name": "name", "type": "string" }],
+    "outputs": [
+      {
+        "name": "name",
+        "type": "string"
+      }
+    ],
     "payable": false,
     "stateMutability": "view",
     "type": "function"
@@ -29,8 +49,14 @@
   {
     "constant": false,
     "inputs": [
-      { "name": "_to", "type": "address" },
-      { "name": "_itemId", "type": "uint256" }
+      {
+        "name": "_to",
+        "type": "address"
+      },
+      {
+        "name": "_itemId",
+        "type": "uint256"
+      }
     ],
     "name": "approve",
     "outputs": [],
@@ -40,7 +66,12 @@
   },
   {
     "constant": false,
-    "inputs": [{ "name": "_owner", "type": "address" }],
+    "inputs": [
+      {
+        "name": "_owner",
+        "type": "address"
+      }
+    ],
     "name": "setOwner",
     "outputs": [],
     "payable": false,
@@ -49,7 +80,12 @@
   },
   {
     "constant": false,
-    "inputs": [{ "name": "_admin", "type": "address" }],
+    "inputs": [
+      {
+        "name": "_admin",
+        "type": "address"
+      }
+    ],
     "name": "removeAdmin",
     "outputs": [],
     "payable": false,
@@ -60,14 +96,24 @@
     "constant": true,
     "inputs": [],
     "name": "totalSupply",
-    "outputs": [{ "name": "_totalSupply", "type": "uint256" }],
+    "outputs": [
+      {
+        "name": "_totalSupply",
+        "type": "uint256"
+      }
+    ],
     "payable": false,
     "stateMutability": "view",
     "type": "function"
   },
   {
     "constant": false,
-    "inputs": [{ "name": "_itemRegistry", "type": "address" }],
+    "inputs": [
+      {
+        "name": "_itemRegistry",
+        "type": "address"
+      }
+    ],
     "name": "setItemRegistry",
     "outputs": [],
     "payable": false,
@@ -77,10 +123,22 @@
   {
     "constant": false,
     "inputs": [
-      { "name": "l", "type": "uint256" },
-      { "name": "r", "type": "uint256" },
-      { "name": "price", "type": "uint256" },
-      { "name": "frozen", "type": "uint256" }
+      {
+        "name": "l",
+        "type": "uint256"
+      },
+      {
+        "name": "r",
+        "type": "uint256"
+      },
+      {
+        "name": "price",
+        "type": "uint256"
+      },
+      {
+        "name": "frozen",
+        "type": "uint256"
+      }
     ],
     "name": "issueCard",
     "outputs": [],
@@ -91,9 +149,18 @@
   {
     "constant": false,
     "inputs": [
-      { "name": "_from", "type": "address" },
-      { "name": "_to", "type": "address" },
-      { "name": "_itemId", "type": "uint256" }
+      {
+        "name": "_from",
+        "type": "address"
+      },
+      {
+        "name": "_to",
+        "type": "address"
+      },
+      {
+        "name": "_itemId",
+        "type": "uint256"
+      }
     ],
     "name": "transferFrom",
     "outputs": [],
@@ -103,30 +170,68 @@
   },
   {
     "constant": true,
-    "inputs": [{ "name": "_admin", "type": "address" }],
+    "inputs": [
+      {
+        "name": "_admin",
+        "type": "address"
+      }
+    ],
     "name": "isAdmin",
-    "outputs": [{ "name": "_isAdmin", "type": "bool" }],
+    "outputs": [
+      {
+        "name": "_isAdmin",
+        "type": "bool"
+      }
+    ],
     "payable": false,
     "stateMutability": "view",
     "type": "function"
   },
   {
     "constant": true,
-    "inputs": [{ "name": "_itemId", "type": "uint256" }],
+    "inputs": [
+      {
+        "name": "_itemId",
+        "type": "uint256"
+      }
+    ],
     "name": "approvedFor",
-    "outputs": [{ "name": "_approved", "type": "address" }],
+    "outputs": [
+      {
+        "name": "_approved",
+        "type": "address"
+      }
+    ],
     "payable": false,
     "stateMutability": "view",
     "type": "function"
   },
   {
     "constant": true,
-    "inputs": [{ "name": "_itemId", "type": "uint256" }],
+    "inputs": [
+      {
+        "name": "_itemId",
+        "type": "uint256"
+      }
+    ],
     "name": "allOf",
     "outputs": [
-      { "name": "_owner", "type": "address" },
-      { "name": "_price", "type": "uint256" },
-      { "name": "_nextPrice", "type": "uint256" }
+      {
+        "name": "_owner",
+        "type": "address"
+      },
+      {
+        "name": "_price",
+        "type": "uint256"
+      },
+      {
+        "name": "_nextPrice",
+        "type": "uint256"
+      },
+      {
+        "name": "_free",
+        "type": "uint256"
+      }
     ],
     "payable": false,
     "stateMutability": "view",
@@ -134,7 +239,12 @@
   },
   {
     "constant": false,
-    "inputs": [{ "name": "_itemId", "type": "uint256" }],
+    "inputs": [
+      {
+        "name": "_itemId",
+        "type": "uint256"
+      }
+    ],
     "name": "listItemFromRegistry",
     "outputs": [],
     "payable": false,
@@ -144,9 +254,18 @@
   {
     "constant": false,
     "inputs": [
-      { "name": "_itemId", "type": "uint256" },
-      { "name": "_price", "type": "uint256" },
-      { "name": "_owner", "type": "address" }
+      {
+        "name": "_itemId",
+        "type": "uint256"
+      },
+      {
+        "name": "_price",
+        "type": "uint256"
+      },
+      {
+        "name": "_owner",
+        "type": "address"
+      }
     ],
     "name": "listItem",
     "outputs": [],
@@ -157,54 +276,129 @@
   {
     "constant": true,
     "inputs": [
-      { "name": "_from", "type": "uint256" },
-      { "name": "_take", "type": "uint256" }
+      {
+        "name": "_itemId",
+        "type": "uint256"
+      }
+    ],
+    "name": "freeOf",
+    "outputs": [
+      {
+        "name": "_free",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_from",
+        "type": "uint256"
+      },
+      {
+        "name": "_take",
+        "type": "uint256"
+      }
     ],
     "name": "itemsForSaleLimit",
-    "outputs": [{ "name": "_items", "type": "uint256[]" }],
+    "outputs": [
+      {
+        "name": "_items",
+        "type": "uint256[]"
+      }
+    ],
     "payable": false,
     "stateMutability": "view",
     "type": "function"
   },
   {
     "constant": true,
-    "inputs": [{ "name": "_owner", "type": "address" }],
+    "inputs": [
+      {
+        "name": "_owner",
+        "type": "address"
+      }
+    ],
     "name": "tokensOf",
-    "outputs": [{ "name": "_tokenIds", "type": "uint256[]" }],
+    "outputs": [
+      {
+        "name": "_tokenIds",
+        "type": "uint256[]"
+      }
+    ],
     "payable": false,
     "stateMutability": "view",
     "type": "function"
   },
   {
     "constant": true,
-    "inputs": [{ "name": "_itemId", "type": "uint256" }],
+    "inputs": [
+      {
+        "name": "_itemId",
+        "type": "uint256"
+      }
+    ],
     "name": "nextPriceOf",
-    "outputs": [{ "name": "_nextPrice", "type": "uint256" }],
+    "outputs": [
+      {
+        "name": "_nextPrice",
+        "type": "uint256"
+      }
+    ],
     "payable": false,
     "stateMutability": "view",
     "type": "function"
   },
   {
     "constant": true,
-    "inputs": [{ "name": "_itemId", "type": "uint256" }],
+    "inputs": [
+      {
+        "name": "_itemId",
+        "type": "uint256"
+      }
+    ],
     "name": "ownerOf",
-    "outputs": [{ "name": "_owner", "type": "address" }],
+    "outputs": [
+      {
+        "name": "_owner",
+        "type": "address"
+      }
+    ],
     "payable": false,
     "stateMutability": "view",
     "type": "function"
   },
   {
     "constant": true,
-    "inputs": [{ "name": "_price", "type": "uint256" }],
+    "inputs": [
+      {
+        "name": "_price",
+        "type": "uint256"
+      }
+    ],
     "name": "calculateDevCut",
-    "outputs": [{ "name": "_devCut", "type": "uint256" }],
+    "outputs": [
+      {
+        "name": "_devCut",
+        "type": "uint256"
+      }
+    ],
     "payable": false,
     "stateMutability": "view",
     "type": "function"
   },
   {
     "constant": false,
-    "inputs": [{ "name": "_admin", "type": "address" }],
+    "inputs": [
+      {
+        "name": "_admin",
+        "type": "address"
+      }
+    ],
     "name": "addAdmin",
     "outputs": [],
     "payable": false,
@@ -213,9 +407,19 @@
   },
   {
     "constant": true,
-    "inputs": [{ "name": "_owner", "type": "address" }],
+    "inputs": [
+      {
+        "name": "_owner",
+        "type": "address"
+      }
+    ],
     "name": "balanceOf",
-    "outputs": [{ "name": "_balance", "type": "uint256" }],
+    "outputs": [
+      {
+        "name": "_balance",
+        "type": "uint256"
+      }
+    ],
     "payable": false,
     "stateMutability": "view",
     "type": "function"
@@ -231,7 +435,12 @@
   },
   {
     "constant": false,
-    "inputs": [{ "name": "_itemIds", "type": "uint256[]" }],
+    "inputs": [
+      {
+        "name": "_itemIds",
+        "type": "uint256[]"
+      }
+    ],
     "name": "populateFromItemRegistry",
     "outputs": [],
     "payable": false,
@@ -242,7 +451,12 @@
     "constant": true,
     "inputs": [],
     "name": "symbol",
-    "outputs": [{ "name": "symbol", "type": "string" }],
+    "outputs": [
+      {
+        "name": "symbol",
+        "type": "string"
+      }
+    ],
     "payable": false,
     "stateMutability": "view",
     "type": "function"
@@ -250,8 +464,14 @@
   {
     "constant": false,
     "inputs": [
-      { "name": "_to", "type": "address" },
-      { "name": "_itemId", "type": "uint256" }
+      {
+        "name": "_to",
+        "type": "address"
+      },
+      {
+        "name": "_itemId",
+        "type": "uint256"
+      }
     ],
     "name": "transfer",
     "outputs": [],
@@ -262,8 +482,14 @@
   {
     "constant": false,
     "inputs": [
-      { "name": "_itemId", "type": "uint256" },
-      { "name": "_price", "type": "uint256" }
+      {
+        "name": "_itemId",
+        "type": "uint256"
+      },
+      {
+        "name": "_price",
+        "type": "uint256"
+      }
     ],
     "name": "changePrice",
     "outputs": [],
@@ -273,9 +499,19 @@
   },
   {
     "constant": true,
-    "inputs": [{ "name": "_itemId", "type": "uint256" }],
+    "inputs": [
+      {
+        "name": "_itemId",
+        "type": "uint256"
+      }
+    ],
     "name": "priceOf",
-    "outputs": [{ "name": "_price", "type": "uint256" }],
+    "outputs": [
+      {
+        "name": "_price",
+        "type": "uint256"
+      }
+    ],
     "payable": false,
     "stateMutability": "view",
     "type": "function"
@@ -283,9 +519,18 @@
   {
     "constant": false,
     "inputs": [
-      { "name": "_itemIds", "type": "uint256[]" },
-      { "name": "_price", "type": "uint256" },
-      { "name": "_owner", "type": "address" }
+      {
+        "name": "_itemIds",
+        "type": "uint256[]"
+      },
+      {
+        "name": "_price",
+        "type": "uint256"
+      },
+      {
+        "name": "_owner",
+        "type": "address"
+      }
     ],
     "name": "listMultipleItems",
     "outputs": [],
@@ -295,7 +540,12 @@
   },
   {
     "constant": false,
-    "inputs": [{ "name": "_itemId", "type": "uint256" }],
+    "inputs": [
+      {
+        "name": "_itemId",
+        "type": "uint256"
+      }
+    ],
     "name": "buy",
     "outputs": [],
     "payable": true,
@@ -304,9 +554,19 @@
   },
   {
     "constant": true,
-    "inputs": [{ "name": "_price", "type": "uint256" }],
+    "inputs": [
+      {
+        "name": "_price",
+        "type": "uint256"
+      }
+    ],
     "name": "calculateNextPrice",
-    "outputs": [{ "name": "_nextPrice", "type": "uint256" }],
+    "outputs": [
+      {
+        "name": "_nextPrice",
+        "type": "uint256"
+      }
+    ],
     "payable": false,
     "stateMutability": "view",
     "type": "function"
@@ -320,9 +580,21 @@
   {
     "anonymous": false,
     "inputs": [
-      { "indexed": true, "name": "_itemId", "type": "uint256" },
-      { "indexed": true, "name": "_owner", "type": "address" },
-      { "indexed": false, "name": "_price", "type": "uint256" }
+      {
+        "indexed": true,
+        "name": "_itemId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "name": "_owner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "_price",
+        "type": "uint256"
+      }
     ],
     "name": "Bought",
     "type": "event"
@@ -330,9 +602,21 @@
   {
     "anonymous": false,
     "inputs": [
-      { "indexed": true, "name": "_itemId", "type": "uint256" },
-      { "indexed": true, "name": "_owner", "type": "address" },
-      { "indexed": false, "name": "_price", "type": "uint256" }
+      {
+        "indexed": true,
+        "name": "_itemId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "name": "_owner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "_price",
+        "type": "uint256"
+      }
     ],
     "name": "Sold",
     "type": "event"
@@ -340,9 +624,21 @@
   {
     "anonymous": false,
     "inputs": [
-      { "indexed": true, "name": "_from", "type": "address" },
-      { "indexed": true, "name": "_to", "type": "address" },
-      { "indexed": false, "name": "_tokenId", "type": "uint256" }
+      {
+        "indexed": true,
+        "name": "_from",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "_to",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "_tokenId",
+        "type": "uint256"
+      }
     ],
     "name": "Transfer",
     "type": "event"
@@ -350,9 +646,21 @@
   {
     "anonymous": false,
     "inputs": [
-      { "indexed": true, "name": "_owner", "type": "address" },
-      { "indexed": true, "name": "_approved", "type": "address" },
-      { "indexed": false, "name": "_tokenId", "type": "uint256" }
+      {
+        "indexed": true,
+        "name": "_owner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "_approved",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "_tokenId",
+        "type": "uint256"
+      }
     ],
     "name": "Approval",
     "type": "event"
