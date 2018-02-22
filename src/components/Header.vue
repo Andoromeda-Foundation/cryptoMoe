@@ -7,16 +7,20 @@
               @click="onCloseInfo"></button>
       <div class="content">
         全球第一款严肃区块链游戏！ 8000年人类文明史，所有伟大帝王。 经由顶级艺术家设计，以全新的形象出现在以太萌王中。 这是一款面向全球，所有文明体系的区块链游戏。
-        每个文明的玩家都可以找到自己心仪的伟大帝王。 2018年2月22日北京时间22:00整，以太萌王正式发布：
-        帝业祖龙-嬴政、
-        陨落的神王-亚历山大、
-        欧皇少女-拿破崙·波拿巴、
-        路痴美食家-乾隆、
-        丰国大明神-丰臣秀吉、
-        神罗之始-查理曼
-        6位伟大君王集体亮相，希望大家，玩得开心！
+        每个文明的玩家都可以找到自己心仪的伟大帝王。 2018年2月22日北京时间22:00整，以太萌王正式发布： 帝业祖龙-嬴政、 陨落的神王-亚历山大、
+        欧皇少女-拿破崙·波拿巴、 路痴美食家-乾隆、 丰国大明神-丰臣秀吉、 神罗之始-查理曼 6位伟大君王集体亮相，希望大家，玩得开心！
         <!-- <p v-for="(info,index) in infos"
            :key="index">{{info}}</p> -->
+        <br/>
+        <br/> The world's first serious blockchain game! 8000 history of human civilization,
+        all great emperors. Designed by the top artists, a brand new image appears
+        in the epic king. This is a blockchain game for all over the world, all civilized
+        system in universal. Every civilization player can find their favorite great
+        emperors. February 22, 2018 Beijing time at 22:00, the king of eruption formally
+        released: Imperialancestral dragon - YinZheng Fall of God - Alexander European
+        royal princess - Napoleon Bonaparte Road crazy eater - Qianlong Toyotomi
+        Ming God - Toyotomi Hideyoshi The beginning of the Shinra - Charlemagne 6
+        great monarch appearance, I hope everyone, have fun!
       </div>
     </div>
 
