@@ -1,68 +1,86 @@
 <template>
-  <header :class="[$route.name === 'Home' ? 'moe-home-header' : '']">
-    <section class="hero is-fullheight moe-hero">
-      <img class="moe-title-img animated zoomIn"
-           src="/static/assets/moe-title.png"
-           alt="以太萌王">
-    </section>
-    <nav class="navbar is-dark">
-      <div class="navbar-brand moe-navbar-brand">
-        <router-link class=" navbar-item"
-                     :to="{ name: 'Home'}">
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$t('CryptoMoe')}}
-        </router-link>
+  <div>
 
-        <router-link v-if="!me"
-                     class=" navbar-item"
-                     :to="{ name: 'Login'}">
-          {{$t('Sign In')}}
-        </router-link>
-
-        <router-link v-else
-                     class=" navbar-item"
-                     :to="{ name: 'User', params:{address: me.address}}">
-          {{$t('My Cards')}}
-        </router-link>
-
-        <router-link class=" navbar-item"
-                     :to="{ name: 'FAQ'}">
-          {{$t('FAQs')}}
-        </router-link>
+    <div v-if="isShowInfo"
+         class="notification is-danger">
+      <button class="delete"
+              @click="onCloseInfo"></button>
+      <div class="content">
+        全球第一款严肃区块链游戏！ 8000年人类文明史，所有伟大帝王。 经由顶级艺术家设计，以全新的形象出现在以太萌王中。 这是一款面向全球，所有文明体系的区块链游戏。
+        每个文明的玩家都可以找到自己心仪的伟大帝王。 2018年2月22日北京时间22:00整，以太萌王正式发布：
+        帝业祖龙-嬴政、
+        陨落的神王-亚历山大、
+        欧皇少女-拿破崙·波拿巴、
+        路痴美食家-乾隆、
+        丰国大明神-丰臣秀吉、
+        神罗之始-查理曼
+        6位伟大君王集体亮相，希望大家，玩得开心！
+        <!-- <p v-for="(info,index) in infos"
+           :key="index">{{info}}</p> -->
       </div>
-
-      <div class="navbar-end moe-navbar-end">
-        <div class=" navbar-item">
-          <div class="field is-grouped">
-            <p class="control">
-              {{network.name}}
-            </p>
-          </div>
-        </div>
-        <div class=" navbar-item">
-          <div class="field is-grouped">
-
-            <div class="control">
-              <div class="select">
-                <select v-model="locale">
-                  <option v-for="(item) in $config.i18n"
-                          :key="item.locale"
-                          :value="item.locale">
-                    {{item.langDisplay}}</option>
-                </select>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-    </nav>
-    <div v-if="infos.length > 0"
-         class="notification is-danger content">
-      <p v-for="(info,index) in infos"
-         :key="index">{{info}}</p>
     </div>
-  </header>
+
+    <header :class="[$route.name === 'Home' ? 'moe-home-header' : '']">
+      <section class="hero is-fullheight moe-hero">
+        <img class="moe-title-img animated zoomIn"
+             src="/static/assets/moe-title.png"
+             alt="以太萌王">
+      </section>
+      <nav class="navbar is-dark">
+        <div class="navbar-brand moe-navbar-brand">
+          <router-link class=" navbar-item"
+                       :to="{ name: 'Home'}">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$t('CryptoMoe')}}
+          </router-link>
+
+          <router-link v-if="!me"
+                       class=" navbar-item"
+                       :to="{ name: 'Login'}">
+            {{$t('Sign In')}}
+          </router-link>
+
+          <router-link v-else
+                       class=" navbar-item"
+                       :to="{ name: 'User', params:{address: me.address}}">
+            {{$t('My Cards')}}
+          </router-link>
+
+          <router-link class=" navbar-item"
+                       :to="{ name: 'FAQ'}">
+            {{$t('FAQs')}}
+          </router-link>
+        </div>
+
+        <div class="navbar-end moe-navbar-end">
+          <div class=" navbar-item">
+            <div class="field is-grouped">
+              <p class="control">
+                {{network.name}}
+              </p>
+            </div>
+          </div>
+          <div class=" navbar-item">
+            <div class="field is-grouped">
+
+              <div class="control">
+                <div class="select">
+                  <select v-model="locale">
+                    <option v-for="(item) in $config.i18n"
+                            :key="item.locale"
+                            :value="item.locale">
+                      {{item.langDisplay}}</option>
+                  </select>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </nav>
+
+    </header>
+  </div>
 </template>
 
 <script>
@@ -72,6 +90,7 @@ export default {
   name: 'Header',
   data() {
     return {
+      isShowInfo: true,
       network: {},
       infos: [],
     };
@@ -117,6 +136,11 @@ export default {
       return this.$store.state.me;
     },
   },
+  methods: {
+    onCloseInfo() {
+      this.isShowInfo = false;
+    },
+  },
   watch: {
     locale(val) {
       this.$i18n.locale = val;
@@ -126,6 +150,12 @@ export default {
 </script>
 
 <style scoped>
+.notification {
+  margin-bottom: 0;
+}
+header {
+  position: relative;
+}
 .moe-hero {
   justify-content: flex-end;
   align-items: center;
