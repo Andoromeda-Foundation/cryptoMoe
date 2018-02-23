@@ -101,7 +101,7 @@ export default {
     const infos = [];
     const announcements = await getAnnouncements();
     announcements.forEach(({ type, content }) => {
-      if (type === 'info') {
+      if (type === 'moe-info') {
         infos.push(content);
       }
     });
