@@ -5,7 +5,7 @@
         <div class="column
            is-full-mobile moe-item-display">
           <img :src="'http://test.cdn.hackx.org/moe/'+item.id+'.jpg'"
-               class="moe-item-img">
+               class="moe-item-img hvr-wobble-horizontal">
         </div>
         <div class="column
            is-full-mobile">
